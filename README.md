@@ -24,7 +24,7 @@ Hệ thống tính **Softmax(Q × Kᵀ)** — 2 giai đoạn đầu của Scaled
 
 **Đã tích hợp và test PASS trên KV260** với cấu hình tham số:
 ```
-SEQ_LEN = D_HEAD = N_PE = DATA_WIDTH = 16
+SEQ_LEN = D_HEAD = N_PE = 64; DATA_WIDTH = 16
 ```
 (riêng `D_MODEL` của linear giữ mặc định — xem mục 4).
 
