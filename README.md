@@ -82,9 +82,9 @@ SEQ_LEN = D_HEAD = N_PE = DATA_WIDTH = 16
 | Parameter | Giá trị đã test | Mô tả |
 |---|:---:|---|
 | `D_MODEL` | 64 | Số chiều embedding |
-| `SEQ_LEN` | 16 | Số hàng Q / hàng output |
-| `D_HEAD` | 16 | Số hàng K / cột output |
-| `N_PE` | 16 | Số PE song song (`N_PE ≤ D_HEAD`, hỗ trợ tiling khi nhỏ hơn) |
+| `SEQ_LEN` | 64 | Số hàng Q / hàng output |
+| `D_HEAD` | 64 | Số hàng K / cột output |
+| `N_PE` | 64 | Số PE song song (`N_PE ≤ D_HEAD`, hỗ trợ tiling khi nhỏ hơn) |
 | `DATA_WIDTH` | 16 | Bit width signed fixed-point |
 
 Ràng buộc bắt buộc: `N_PE ≤ D_HEAD`, `D_MODEL ≥ D_HEAD`, `N_PE × N_TILES ≥ D_HEAD`.
@@ -113,8 +113,8 @@ Chi tiết đầy đủ (kiến trúc PE array, double-buffer, tiling, testbench
 
 | Parameter | Giá trị đã test | Mô tả |
 |---|:---:|---|
-| `D_HEAD` | 16 | Số phần tử mỗi hàng |
-| `SEQ_LEN` | 16 | Số hàng |
+| `D_HEAD` | 64 | Số phần tử mỗi hàng |
+| `SEQ_LEN` | 64 | Số hàng |
 | `DATA_WIDTH` | 16 | Bit width input `S` (signed) |
 | `EXP_WIDTH` | 16 | Bit width `exp_rom` / kết quả (unsigned) |
 | `RECIP_ADDR_W` | 12 | Địa chỉ ROM reciprocal — không phụ thuộc `D_HEAD`/`SEQ_LEN` |
