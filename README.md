@@ -1,4 +1,4 @@
-# Dự án tích hợp: DMA + IP Linear (Q×Kᵀ) + IP Softmax trên Zynq KV260
+<img width="926" height="494" alt="image" src="https://github.com/user-attachments/assets/308f8952-9cd6-42d4-8dd4-5acb5111684b" /># Dự án tích hợp: DMA + IP Linear (Q×Kᵀ) + IP Softmax trên Zynq KV260
 
 ## Mục lục
 
@@ -33,7 +33,7 @@ SEQ_LEN = D_HEAD = N_PE = DATA_WIDTH = 16
 ## 2. Kiến trúc hệ thống
 
 <p align="center">
-  <img src="https://github.com/user-attachments/assets/90197d86-ffbc-48a5-b931-99e4b7906829" alt="Sơ đồ kiến trúc hệ thống" width="700">
+  <img src="https://github.com/user-attachments/assets/0aa09197-3522-48c2-b964-444b39dbda0a" alt="Sơ đồ kiến trúc hệ thống" width="700">
   <br>
   <em>Sơ đồ kiến trúc hệ thống</em>
 </p>
@@ -72,7 +72,7 @@ SEQ_LEN = D_HEAD = N_PE = DATA_WIDTH = 16
 ## 4. IP Linear (Q×Kᵀ) — tóm tắt
 
 <p align="center">
-  <img src="https://github.com/user-attachments/assets/413d0b3e-ae3a-4b55-87dd-84382f12c2bc" alt="Sơ đồ FSM IP LINEAR" width="700">
+  <img src="https://github.com/user-attachments/assets/277750a5-951d-4079-875e-9a92d4da35c3" alt="Sơ đồ FSM IP LINEAR" width="700">
   <br>
   <em>Sơ đồ FSM IP LINEAR</em>
 </p>
@@ -104,7 +104,7 @@ Chi tiết đầy đủ (kiến trúc PE array, double-buffer, tiling, testbench
 ## 5. IP Softmax — tóm tắt
 
 <p align="center">
-  <img src="https://github.com/user-attachments/assets/06eb6b05-990c-48bc-9484-df38490e8be0" width="700">
+  <img src="https://github.com/user-attachments/assets/3f7d4650-cabe-4000-8b6e-0de44df3b62e" width="700">
   <br>
   <em>Sơ đồ FSM IP SOFTMAX</em>
 </p>
