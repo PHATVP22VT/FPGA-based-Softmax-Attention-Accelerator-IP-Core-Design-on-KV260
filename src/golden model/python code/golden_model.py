@@ -1,6 +1,7 @@
 import numpy as np
 import os
 import math
+import struct
 
 # ==============================================================================
 # golden_model.py — Bit-true reference model for ip_axi_linear
@@ -38,6 +39,7 @@ ROM_DEPTH = 2048            # exp LUT depth (fixed)
 # ==============================================================================
 COE_OUT_PATH = r"E:\DOWNLOAD\HCMUT\TTKS\src\coe files\golden model"
 MEM_OUT_PATH = r"E:\DOWNLOAD\HCMUT\TTKS\src\mem files\golden model"
+BIN_OUT_PATH = r"E:\DOWNLOAD\UbuntuKV260\src\bin files"
 
 # ==============================================================================
 # INPUT UTILITIES
@@ -286,6 +288,19 @@ def write_golden_softmax(weights_q15):
         print(f"[OK] golden_softmax.mem : {fp}")
     except Exception as e:
         print(f"[ERR] golden_softmax.mem: {e}")
+
+
+def write_bin_32(filename, data, out_path=BIN_OUT_PATH):
+    """Write int64 array as 32-bit little-endian binary file for KV260 Ubuntu test."""
+    try:
+        _ensure(out_path)
+        fp = os.path.join(out_path, filename)
+        with open(fp, 'wb') as f:
+            for v in data:
+                f.write(struct.pack('<I', int(v) & 0xFFFFFFFF))
+        print(f"[OK] BIN 32-bit : {fp}  ({len(data)} words, {len(data)*4} bytes)")
+    except Exception as e:
+        print(f"[ERR] {filename}: {e}")
 
 
 # ==============================================================================
@@ -753,6 +768,13 @@ if __name__ == "__main__":
 
     # golden_softmax.mem: SEQ_LEN × D_HEAD elements, Q1.15 unsigned, 32-bit words
     write_golden_softmax(weights_q15)
+
+    # Binary files for KV260 Ubuntu test (ready to copy to board)
+    print("\n[STEP 7b] Writing binary files for KV260 Ubuntu")
+    write_bin_32("k_data.bin", K_int.flatten())
+    write_bin_32("q_data.bin", Q_int.flatten())
+    write_bin_32("golden_softmax.bin", weights_q15.flatten())
+    write_bin_32("golden_score.bin", score_int.flatten())
 
     # attn_test_data.h: k_data/q_data/golden_score/golden_softmax for main.c
     # bare-metal bring-up. Same flatten order as write_mem_32(Q_int.flatten())/

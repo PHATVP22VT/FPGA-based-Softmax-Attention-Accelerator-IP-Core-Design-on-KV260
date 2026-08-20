@@ -22,7 +22,8 @@
       "proc_sys_reset_0": "",
       "xlconstant_0": "",
       "xlconstant_1": "",
-      "ip_axi_softmax_0": ""
+      "ip_axi_softmax_0": "",
+      "axis_data_fifo_0": ""
     },
     "components": {
       "zynq_ultra_ps_e_0": {
@@ -761,22 +762,16 @@
             "value": "IOPLL"
           },
           "PSU__CRL_APB__PL0_REF_CTRL__ACT_FREQMHZ": {
-            "value": "99.999001"
+            "value": "142.855713"
           },
           "PSU__CRL_APB__PL0_REF_CTRL__FREQMHZ": {
-            "value": "100"
+            "value": "150"
           },
           "PSU__CRL_APB__PL0_REF_CTRL__SRCSEL": {
             "value": "IOPLL"
           },
           "PSU__CRL_APB__PL1_REF_CTRL__ACT_FREQMHZ": {
             "value": "99.999001"
-          },
-          "PSU__CRL_APB__PL1_REF_CTRL__FREQMHZ": {
-            "value": "100"
-          },
-          "PSU__CRL_APB__PL1_REF_CTRL__SRCSEL": {
-            "value": "IOPLL"
           },
           "PSU__CRL_APB__QSPI_REF_CTRL__ACT_FREQMHZ": {
             "value": "124.998749"
@@ -929,7 +924,7 @@
             "value": "1"
           },
           "PSU__FPGA_PL1_ENABLE": {
-            "value": "1"
+            "value": "0"
           },
           "PSU__GPIO0_MIO__IO": {
             "value": "MIO 0 .. 25"
@@ -983,16 +978,13 @@
             "value": "100.000000"
           },
           "PSU__MAXIGP0__DATA_WIDTH": {
-            "value": "128"
+            "value": "32"
           },
           "PSU__OVERRIDE__BASIC_CLOCK": {
             "value": "0"
           },
           "PSU__PL_CLK0_BUF": {
             "value": "TRUE"
-          },
-          "PSU__PL_CLK1_BUF": {
-            "value": "FALSE"
           },
           "PSU__PMU_COHERENCY": {
             "value": "0"
@@ -1624,20 +1616,20 @@
       },
       "ip_axi_linear_0": {
         "vlnv": "xilinx.com:user:ip_axi_linear:5.0",
-        "ip_revision": "27",
+        "ip_revision": "32",
         "xci_name": "zynq_dma_ip_linear_ip_axi_linear_0_0",
         "xci_path": "ip\\zynq_dma_ip_linear_ip_axi_linear_0_0\\zynq_dma_ip_linear_ip_axi_linear_0_0.xci",
         "inst_hier_path": "ip_axi_linear_0",
         "has_run_ip_tcl": "true",
         "parameters": {
           "D_HEAD": {
-            "value": "16"
+            "value": "64"
           },
           "N_PE": {
-            "value": "16"
+            "value": "64"
           },
           "SEQ_LEN": {
-            "value": "16"
+            "value": "64"
           }
         }
       },
@@ -1734,17 +1726,63 @@
       },
       "ip_axi_softmax_0": {
         "vlnv": "xilinx.com:user:ip_axi_softmax:1.0",
-        "ip_revision": "29",
+        "ip_revision": "32",
         "xci_name": "zynq_dma_ip_linear_ip_axi_softmax_0_0",
         "xci_path": "ip\\zynq_dma_ip_linear_ip_axi_softmax_0_0\\zynq_dma_ip_linear_ip_axi_softmax_0_0.xci",
         "inst_hier_path": "ip_axi_softmax_0",
         "has_run_ip_tcl": "true",
         "parameters": {
           "D_HEAD": {
-            "value": "16"
+            "value": "64"
           },
           "SEQ_LEN": {
-            "value": "16"
+            "value": "64"
+          }
+        }
+      },
+      "axis_data_fifo_0": {
+        "vlnv": "xilinx.com:ip:axis_data_fifo:2.0",
+        "ip_revision": "17",
+        "xci_name": "zynq_dma_ip_linear_axis_data_fifo_0_0",
+        "xci_path": "ip\\zynq_dma_ip_linear_axis_data_fifo_0_0\\zynq_dma_ip_linear_axis_data_fifo_0_0.xci",
+        "inst_hier_path": "axis_data_fifo_0",
+        "has_run_ip_tcl": "true",
+        "parameters": {
+          "FIFO_DEPTH": {
+            "value": "2048"
+          },
+          "HAS_TLAST": {
+            "value": "1"
+          },
+          "TDATA_NUM_BYTES": {
+            "value": "4"
+          }
+        },
+        "interface_ports": {
+          "S_AXIS": {
+            "bd_attributes": {
+              "BRIDGES": {
+                "value": "M_AXIS",
+                "value_src": "auto"
+              },
+              "TYPE": {
+                "value": "INTERIOR",
+                "value_src": "auto"
+              }
+            },
+            "vlnv": "xilinx.com:interface:axis_rtl:1.0",
+            "mode": "Slave",
+            "bridges": [
+              "M_AXIS"
+            ]
+          },
+          "M_AXIS": {
+            "bd_attributes": {
+              "TYPE": {
+                "value": "INTERIOR",
+                "value_src": "auto"
+              }
+            }
           }
         }
       }
@@ -1752,8 +1790,8 @@
     "interface_nets": {
       "axi_dma_0_M_AXIS_MM2S": {
         "interface_ports": [
-          "axi_dma_0/M_AXIS_MM2S",
-          "ip_axi_linear_0/S00_AXIS"
+          "axis_data_fifo_0/S_AXIS",
+          "axi_dma_0/M_AXIS_MM2S"
         ]
       },
       "axi_dma_0_M_AXI_MM2S": {
@@ -1766,6 +1804,12 @@
         "interface_ports": [
           "axi_dma_0/M_AXI_S2MM",
           "smartconnect_0/S02_AXI"
+        ]
+      },
+      "axis_data_fifo_0_M_AXIS": {
+        "interface_ports": [
+          "axis_data_fifo_0/M_AXIS",
+          "ip_axi_linear_0/S00_AXIS"
         ]
       },
       "bram_ctrl_dst_BRAM_PORTA": {
@@ -1842,6 +1886,7 @@
           "axi_dma_0/axi_resetn",
           "bram_ctrl_src/s_axi_aresetn",
           "bram_ctrl_dst/s_axi_aresetn",
+          "axis_data_fifo_0/s_axis_aresetn",
           "ip_axi_linear_0/s00_axi_aresetn",
           "ip_axi_softmax_0/s00_axi_aresetn"
         ]
@@ -1867,10 +1912,11 @@
           "axi_dma_0/s_axi_lite_aclk",
           "axi_dma_0/m_axi_mm2s_aclk",
           "axi_dma_0/m_axi_s2mm_aclk",
-          "ip_axi_linear_0/s00_axi_aclk",
           "bram_ctrl_src/s_axi_aclk",
           "bram_ctrl_dst/s_axi_aclk",
           "zynq_ultra_ps_e_0/maxihpm0_fpd_aclk",
+          "axis_data_fifo_0/s_axis_aclk",
+          "ip_axi_linear_0/s00_axi_aclk",
           "ip_axi_softmax_0/s00_axi_aclk"
         ]
       },
@@ -1894,7 +1940,7 @@
               "SEG_bram_ctrl_dst_Mem0": {
                 "address_block": "/bram_ctrl_dst/S_AXI/Mem0",
                 "offset": "0x00A0010000",
-                "range": "16K"
+                "range": "32K"
               },
               "SEG_bram_ctrl_src_Mem0": {
                 "address_block": "/bram_ctrl_src/S_AXI/Mem0",
@@ -1969,7 +2015,7 @@
               "SEG_bram_ctrl_dst_Mem0": {
                 "address_block": "/bram_ctrl_dst/S_AXI/Mem0",
                 "offset": "0xA0010000",
-                "range": "16K"
+                "range": "32K"
               },
               "SEG_bram_ctrl_src_Mem0": {
                 "address_block": "/bram_ctrl_src/S_AXI/Mem0",

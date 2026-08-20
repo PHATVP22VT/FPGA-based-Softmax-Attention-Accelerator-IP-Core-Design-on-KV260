@@ -185,7 +185,7 @@
         "M02_AXI_rlast": [ { "direction": "in", "driver_value": "0" } ],
         "M02_AXI_rvalid": [ { "direction": "in", "driver_value": "0" } ],
         "M02_AXI_rready": [ { "direction": "out", "driver_value": "0" } ],
-        "M03_AXI_awaddr": [ { "direction": "out", "size_left": "13", "size_right": "0", "driver_value": "0" } ],
+        "M03_AXI_awaddr": [ { "direction": "out", "size_left": "14", "size_right": "0", "driver_value": "0" } ],
         "M03_AXI_awlen": [ { "direction": "out", "size_left": "7", "size_right": "0", "driver_value": "0" } ],
         "M03_AXI_awsize": [ { "direction": "out", "size_left": "2", "size_right": "0", "driver_value": "010" } ],
         "M03_AXI_awburst": [ { "direction": "out", "size_left": "1", "size_right": "0", "driver_value": "1" } ],
@@ -203,7 +203,7 @@
         "M03_AXI_bresp": [ { "direction": "in", "size_left": "1", "size_right": "0", "driver_value": "0" } ],
         "M03_AXI_bvalid": [ { "direction": "in", "driver_value": "0" } ],
         "M03_AXI_bready": [ { "direction": "out", "driver_value": "0" } ],
-        "M03_AXI_araddr": [ { "direction": "out", "size_left": "13", "size_right": "0", "driver_value": "0" } ],
+        "M03_AXI_araddr": [ { "direction": "out", "size_left": "14", "size_right": "0", "driver_value": "0" } ],
         "M03_AXI_arlen": [ { "direction": "out", "size_left": "7", "size_right": "0", "driver_value": "0" } ],
         "M03_AXI_arsize": [ { "direction": "out", "size_left": "2", "size_right": "0", "driver_value": "010" } ],
         "M03_AXI_arburst": [ { "direction": "out", "size_left": "1", "size_right": "0", "driver_value": "1" } ],
@@ -656,7 +656,7 @@
             "PROTOCOL": [ { "value": "AXI4", "value_permission": "bd", "resolve_type": "generated", "is_static_object": false } ],
             "FREQ_HZ": [ { "value": "100000000", "value_src": "default_prop", "value_permission": "bd", "resolve_type": "generated", "format": "long", "is_static_object": false } ],
             "ID_WIDTH": [ { "value": "0", "value_permission": "bd", "resolve_type": "generated", "format": "long", "is_static_object": false } ],
-            "ADDR_WIDTH": [ { "value": "14", "value_src": "ip_propagated", "value_permission": "bd", "resolve_type": "generated", "format": "long", "is_static_object": false } ],
+            "ADDR_WIDTH": [ { "value": "15", "value_src": "ip_propagated", "value_permission": "bd", "resolve_type": "generated", "format": "long", "is_static_object": false } ],
             "AWUSER_WIDTH": [ { "value": "0", "value_permission": "bd", "resolve_type": "generated", "format": "long", "is_static_object": false } ],
             "ARUSER_WIDTH": [ { "value": "0", "value_permission": "bd", "resolve_type": "generated", "format": "long", "is_static_object": false } ],
             "WUSER_WIDTH": [ { "value": "0", "value_permission": "bd", "resolve_type": "generated", "format": "long", "is_static_object": false } ],
@@ -782,5 +782,5 @@
       }
     }
   },
-  "checksum": "f9073a7e"
+  "checksum": "d73dd327"
 }

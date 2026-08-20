@@ -4,7 +4,7 @@
     "xci_name": "dma_mix_ip_linear_ip_axi_softmax_0_0",
     "cell_name": "ip_axi_softmax_0",
     "component_reference": "xilinx.com:user:ip_axi_softmax:1.0",
-    "ip_revision": "29",
+    "ip_revision": "32",
     "gen_directory": "../../../../../../dma.gen/sources_1/bd/dma_mix_ip_linear/ip/dma_mix_ip_linear_ip_axi_softmax_0_0",
     "parameters": {
       "component_parameters": {
@@ -13,8 +13,8 @@
         "C_S00_AXI_BASEADDR": [ { "value": "0xFFFFFFFF", "resolve_type": "user", "format": "bitString", "enabled": false, "usage": "all" } ],
         "C_S00_AXI_HIGHADDR": [ { "value": "0x00000000", "resolve_type": "user", "format": "bitString", "enabled": false, "usage": "all" } ],
         "Component_Name": [ { "value": "dma_mix_ip_linear_ip_axi_softmax_0_0", "resolve_type": "user", "usage": "all" } ],
-        "D_HEAD": [ { "value": "16", "value_src": "user", "resolve_type": "user", "format": "long", "usage": "all" } ],
-        "SEQ_LEN": [ { "value": "16", "value_src": "user", "resolve_type": "user", "format": "long", "usage": "all" } ],
+        "D_HEAD": [ { "value": "64", "value_src": "user", "resolve_type": "user", "format": "long", "usage": "all" } ],
+        "SEQ_LEN": [ { "value": "64", "value_src": "user", "resolve_type": "user", "format": "long", "usage": "all" } ],
         "DATA_WIDTH": [ { "value": "16", "resolve_type": "user", "format": "long", "usage": "all" } ],
         "EXP_WIDTH": [ { "value": "16", "resolve_type": "user", "format": "long", "usage": "all" } ],
         "RECIP_ADDR_W": [ { "value": "12", "resolve_type": "user", "format": "long", "usage": "all" } ],
@@ -23,8 +23,8 @@
       "model_parameters": {
         "C_S00_AXI_DATA_WIDTH": [ { "value": "32", "resolve_type": "generated", "format": "long", "usage": "all" } ],
         "C_S00_AXI_ADDR_WIDTH": [ { "value": "4", "resolve_type": "generated", "format": "long", "usage": "all" } ],
-        "D_HEAD": [ { "value": "16", "resolve_type": "generated", "format": "long", "usage": "all" } ],
-        "SEQ_LEN": [ { "value": "16", "resolve_type": "generated", "format": "long", "usage": "all" } ],
+        "D_HEAD": [ { "value": "64", "resolve_type": "generated", "format": "long", "usage": "all" } ],
+        "SEQ_LEN": [ { "value": "64", "resolve_type": "generated", "format": "long", "usage": "all" } ],
         "DATA_WIDTH": [ { "value": "16", "resolve_type": "generated", "format": "long", "usage": "all" } ],
         "EXP_WIDTH": [ { "value": "16", "resolve_type": "generated", "format": "long", "usage": "all" } ],
         "RECIP_ADDR_W": [ { "value": "12", "resolve_type": "generated", "format": "long", "usage": "all" } ],
@@ -45,7 +45,7 @@
       },
       "runtime_parameters": {
         "IPCONTEXT": [ { "value": "IP_Integrator" } ],
-        "IPREVISION": [ { "value": "29" } ],
+        "IPREVISION": [ { "value": "32" } ],
         "MANAGED": [ { "value": "TRUE" } ],
         "OUTPUTDIR": [ { "value": "../../../../../../dma.gen/sources_1/bd/dma_mix_ip_linear/ip/dma_mix_ip_linear_ip_axi_softmax_0_0" } ],
         "SELECTEDSIMMODEL": [ { "value": "" } ],
@@ -249,5 +249,5 @@
       }
     }
   },
-  "checksum": "79d28fbb"
+  "checksum": "8e48290e"
 }

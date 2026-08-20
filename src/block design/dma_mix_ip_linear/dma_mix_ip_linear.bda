@@ -233,7 +233,7 @@
             "V5": {
                 "VT": "AC",
                 "BA": "0x00010000",
-                "HA": "0x00013FFF",
+                "HA": "0x00017FFF",
                 "BP": "C_S_AXI_BASEADDR",
                 "HP": "C_S_AXI_HIGHADDR",
                 "MA": "Data_S2MM",
@@ -251,7 +251,7 @@
             "V6": {
                 "VT": "AC",
                 "BA": "0x00010000",
-                "HA": "0x00013FFF",
+                "HA": "0x00017FFF",
                 "BP": "C_S_AXI_BASEADDR",
                 "HP": "C_S_AXI_HIGHADDR",
                 "MA": "Master_AXI",

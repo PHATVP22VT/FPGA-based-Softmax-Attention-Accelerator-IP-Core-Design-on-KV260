@@ -1,0 +1,470 @@
+﻿Äáº I Há»ŒC QUá»C GIA THÃ€NH PHá» Há»’ CHÃ MINH
+TRÆ¯á»œNG Äáº I Há»ŒC BÃCH KHOA
+KHOA ÄIá»†N â€“ ÄIá»†N Tá»¬
+Bá»˜ MÃ”N ÄIá»†N Tá»¬
+
+BÃO CÃO Äá»’ ÃN THá»°C Táº¬P Ká»¸ SÆ¯
+Äá»€ TÃ€I: THIáº¾T Káº¾ LÃ•I IP TÄ‚NG Tá»C CHO Bá»˜ SOFTMAX ATTENTION TRÃŠN KIT KV260
+GVHD: TS. TRÆ¯Æ NG QUANG VINH
+
+
+VERSION: 04
+
+
+TP. Há»’ CHÃ MINH
+
+
+
+Má»¤C Lá»¤C HÃŒNH áº¢NH
+ TOC \h \z \c "HÃ¬nh " HÃ¬nh  1:  SÆ¡ Ä‘á»“ kiáº¿n trÃºc bus há»‡ thá»‘ng PAGEREF _Toc236056541 \h 7
+HÃ¬nh  2: SÆ¡ Ä‘á»“ khá»‘i cáº¥u trÃºc IP Linear PAGEREF _Toc236056542 \h 9
+HÃ¬nh  3: SÆ¡ Ä‘á»“ FSM Linear dáº¡ng Moore PAGEREF _Toc236056543 \h 9
+HÃ¬nh  4: LÆ°u Ä‘á»“ giáº£i thuáº­t cá»§a IP BRAM k ram PAGEREF _Toc236056544 \h 10
+HÃ¬nh  5: LÆ°u Ä‘á»“ giáº£i thuáº­t state Preload mac PAGEREF _Toc236056545 \h 11
+HÃ¬nh  6: LÆ°u Ä‘á»“ giáº£i thuáº­t 1 cá»§a state COMPUTE PAGEREF _Toc236056546 \h 12
+HÃ¬nh  7: LÆ°u Ä‘á»“ giáº£i thuáº­t 2 cá»§a state COMPUTE PAGEREF _Toc236056547 \h 13
+HÃ¬nh  8: SÆ¡ Ä‘á»“ cáº¥u trÃºc náº¡p dá»¯ liá»‡u cho PE trong state COMPUTE vá»›i N TILES = 1 PAGEREF _Toc236056548 \h 15
+HÃ¬nh  9: LÆ°u Ä‘á»“ giáº£i thuáº­t cá»§a submodule matmul_ip trong 2 state PRELOAD MAC vÃ  COMPUTE cá»§a module linear trÆ°á»ng há»£p N PE = N COLS PAGEREF _Toc236056549 \h 16
+HÃ¬nh  10: SÆ¡ Ä‘á»“ cáº¥u trÃºc náº¡p dá»¯ liá»‡u cho PE trong state COMPUTE vá»›i N TILES > 1 PAGEREF _Toc236056550 \h 17
+HÃ¬nh  11: LÆ°u Ä‘á»“ giáº£i thuáº­t cá»§a submodule matmul_ip trong 2 state PRELOAD MAC vÃ  COMPUTE cá»§a module linear trÆ°á»ng há»£p N PE < N COLS PAGEREF _Toc236056551 \h 18
+HÃ¬nh  12: LÆ°u Ä‘á»“ giáº£i thuáº­t pháº§n má»m cá»§a module pe_unit PAGEREF _Toc236056552 \h 19
+HÃ¬nh  13: SÆ¡ Ä‘á»“ khá»‘i cáº¥u trÃºc IP Softmax PAGEREF _Toc236056553 \h 21
+HÃ¬nh  14: FSM IP Softmax dáº¡ng Moore PAGEREF _Toc236056554 \h 21
+HÃ¬nh  15: LÆ°u Ä‘á»“ giáº£i thuáº­t cá»§a FSM Load Row PAGEREF _Toc236056555 \h 23
+HÃ¬nh  16: LÆ°u Ä‘á»“ giáº£i thuáº­t cá»§a FSM state Find Max PAGEREF _Toc236056556 \h 24
+HÃ¬nh  17: LÆ°u Ä‘á»“ giáº£i thuáº­t cá»§a FSM Exp Sum PAGEREF _Toc236056557 \h 25
+HÃ¬nh  18: LÆ°u Ä‘á»“ giáº£i thuáº­t FSM cá»§a ST DIV ISSUE vÃ  ST DIV DRAIN PAGEREF _Toc236056558 \h 25
+HÃ¬nh  19: LÆ°u Ä‘á»“ giáº£i thuáº­t thá»±c thi state ST_DIV_ISSUE PAGEREF _Toc236056559 \h 26
+HÃ¬nh  20: LÆ°u Ä‘á»“ giáº£i thuáº­t thá»±c thi module reciprocal_divider PAGEREF _Toc236056560 \h 27
+HÃ¬nh  21: LÆ°u Ä‘á»“ giáº£i thuáº­t cá»§a FSM SERIALIZE PAGEREF _Toc236056561 \h 28
+HÃ¬nh  22: LÆ°u Ä‘á»“ giáº£i thuáº­t pháº§n má»m thá»±c hiá»‡n tiling ma tráº­n Q khi tÄƒng SEQ_LEN PAGEREF _Toc236056562 \h 29
+HÃ¬nh  23: SÆ¡ Ä‘á»“ cáº¥u trÃºc cÃ¡c IP giao tiáº¿p khi mÃ´ phá»ng trÃªn Vivado PAGEREF _Toc236056563 \h 30
+HÃ¬nh  24: Block Design mÃ´ phá»ng Vivado PAGEREF _Toc236056564 \h 30
+HÃ¬nh  25: SÆ¡ Ä‘á»“ PS lai PL cáº¥u trÃºc mÃ´ phá»ng PAGEREF _Toc236056565 \h 32
+HÃ¬nh  26: SÆ¡ Ä‘á»“ khá»‘i PL thá»±c hiá»‡n testbench PAGEREF _Toc236056566 \h 33
+HÃ¬nh  27: Káº¿t quáº£ tcl cá»§a tb vÃ  giÃ¡ trá»‹ rtl softmax Ä‘Æ°á»£c lÆ°u trong mem file PAGEREF _Toc236056567 \h 35
+HÃ¬nh  28: Softmax data Ä‘Æ°á»£c push vÃ o BRAM DST tá»« DMA S2MM PAGEREF _Toc236056568 \h 36
+HÃ¬nh  29: SÆ¡ Ä‘á»“ khá»‘i cáº¥u trÃºc cÃ¡c IP giao tiáº¿p khi thá»±c thi trÃªn KV260 PAGEREF _Toc236056569 \h 36
+HÃ¬nh  30: Cáº¥u trÃºc Block Design PAGEREF _Toc236056570 \h 37
+HÃ¬nh  31: SÆ¡ Ä‘á»“ khá»‘i luá»“ng thá»±c thi báº±ng Baremetal PAGEREF _Toc236056571 \h 38
+HÃ¬nh  32: SÆ¡ Ä‘á»“ khá»‘i luá»“ng thá»±c thi báº±ng linux thÃ´ng qua SD card PAGEREF _Toc236056572 \h 39
+HÃ¬nh  33: Káº¿t quáº£ tÃ­nh toÃ¡n attention score trÃªn kv260 PAGEREF _Toc236056573 \h 42
+HÃ¬nh  34: Káº¿t quáº£ tÃ­nh toÃ¡n softmax score trÃªn kv260 PAGEREF _Toc236056574 \h 43
+HÃ¬nh  35: Káº¿t quáº£ push dá»± Ã¡n báº±ng linux PAGEREF _Toc236056575 \h 44
+HÃ¬nh  36: Káº¿t quáº£ so sÃ¡nh vá»›i golden model tá»« dá»¯ liá»‡u Ä‘Æ°á»£c trÃ­ch xuáº¥t thÃ´ng qua ubuntu PAGEREF _Toc236056576 \h 44
+HÃ¬nh  37: Káº¿t quáº£ cháº¡y kÃ­ch thÆ°á»›c [128x64]x[16x64] cÃ³ thÃªm tiling báº±ng software PAGEREF _Toc236056577 \h 45
+HÃ¬nh  38: Káº¿t quáº£ cháº¡y kÃ­ch thÆ°á»›c [128x64]x[16x64] cÃ³ thÃªm tiling báº±ng software PAGEREF _Toc236056578 \h 46
+HÃ¬nh  39: ThÃªm pipeline 2 state cá»§a softmax táº¡i phÃ©p chia Chu ká»³ 1 chá»‰ lo Ä‘á»c RAM vÃ  nhÃ¢n. Chu ká»³ 2 chá»‰ lo dá»‹ch bit vÃ  xuáº¥t ra PAGEREF _Toc236056579 \h 47
+HÃ¬nh  40: ThÃªm pipeline 2 state cá»§a softmax táº¡i phÃ©p chia Chu ká»³ 1 chá»‰ lo Ä‘á»c RAM vÃ  nhÃ¢n. Chu ká»³ 2 chá»‰ lo dá»‹ch bit vÃ  xuáº¥t ra PAGEREF _Toc236056580 \h 48
+HÃ¬nh  41: Káº¿t quáº£ lÆ°u giÃ¡ trá»‹ softmax score vÃ  so sÃ¡nh golden model khi cháº¡y kÃ­ch thÆ°á»›c [128x64]x[16x64] cÃ³ thÃªm tiling báº±ng software PAGEREF _Toc236056581 \h 49
+HÃ¬nh  42: Káº¿t quáº£ lÆ°u giÃ¡ trá»‹ softmax score vÃ  so sÃ¡nh golden model khi cháº¡y kÃ­ch thÆ°á»›c [128x64]x[16x64] cÃ³ thÃªm tiling báº±ng software PAGEREF _Toc236056582 \h 50
+HÃ¬nh  43: LÆ°u Ä‘á»“ giáº£i thuáº­t thá»±c thi phÃ©p tÃ­nh attention score trong llama2.c PAGEREF _Toc236056583 \h 52
+HÃ¬nh  44: SÆ¡ Ä‘á»“ bus hardware DMA â€“ IP AXI Linear PAGEREF _Toc236056584 \h 53
+HÃ¬nh  45: Cáº¥u trÃºc Block Design cá»§a khá»‘i RTL DMA â€“ IP AXI Linear PAGEREF _Toc236056585 \h 53
+HÃ¬nh  46: Káº¿t quáº£ cháº¡y model Stories 15M dÃ¹ng attention score cá»§a llama2.s láº§n 1 PAGEREF _Toc236056586 \h 55
+HÃ¬nh  47: Káº¿t quáº£ cháº¡y model Stories 15M dÃ¹ng attention score cá»§a llama2.s láº§n 2 PAGEREF _Toc236056587 \h 55
+HÃ¬nh  48: Káº¿t quáº£ cháº¡y model Stories 15M dÃ¹ng attention score cá»§a llama2.s láº§n 3 PAGEREF _Toc236056588 \h 55
+HÃ¬nh  49: Káº¿t quáº£ cháº¡y model Stories 15M dÃ¹ng RTL attention score FPGA KV260 láº§n 1 PAGEREF _Toc236056589 \h 55
+HÃ¬nh  50: Káº¿t quáº£ cháº¡y model Stories 15M dÃ¹ng RTL attention score FPGA KV260 láº§n 2 PAGEREF _Toc236056590 \h 55
+HÃ¬nh  51: Káº¿t quáº£ cháº¡y model Stories 15M dÃ¹ng RTL attention score FPGA KV260 láº§n 3 PAGEREF _Toc236056591 \h 56
+HÃ¬nh  52: Timing summary cáº¥u trÃºc verion 01 PAGEREF _Toc236056592 \h 57
+HÃ¬nh  53: Timing summary cáº¥u trÃºc verion 02 PAGEREF _Toc236056593 \h 57
+HÃ¬nh  54: Timing summary cáº¥u trÃºc verion 03 PAGEREF _Toc236056594 \h 57
+HÃ¬nh  55: On-Chip Power cáº¥u trÃºc version 01 PAGEREF _Toc236056595 \h 58
+HÃ¬nh  56: On-Chip Power cáº¥u trÃºc version 02 PAGEREF _Toc236056596 \h 58
+HÃ¬nh  57: On-Chip Power cáº¥u trÃºc version 03 PAGEREF _Toc236056597 \h 59
+HÃ¬nh  58: Design Runs cáº¥u trÃºc version 01 PAGEREF _Toc236056598 \h 59
+HÃ¬nh  59: Design Runs cáº¥u trÃºc version 02 PAGEREF _Toc236056599 \h 59
+HÃ¬nh  60: Design Runs cáº¥u trÃºc version 03 PAGEREF _Toc236056600 \h 59
+HÃ¬nh  61: Káº¿t quáº£ cháº¡y IP Linear vá»›i Q[64x64] vÃ  K[64x64] PAGEREF _Toc236056601 \h 60
+HÃ¬nh  62 Káº¿t quáº£ cháº¡y IP Linear vá»›i Q[128x64] vÃ  K[128x64] PAGEREF _Toc236056602 \h 61
+
+
+Má»¤C Lá»¤C Báº¢NG
+ TOC \h \z \c "Table" Table 1:ThÃ´ng tin chuáº©n giao tiáº¿p cá»§a cÃ¡c IP PAGEREF _Toc236056603 \h 8
+Table 2: Parameter module matmul_ip PAGEREF _Toc236056604 \h 14
+Table 3: Localparameter module matmul_ip PAGEREF _Toc236056605 \h 14
+Table 4: Parameter module pe_unit PAGEREF _Toc236056606 \h 19
+Table 5: Localparameter module pe_unit PAGEREF _Toc236056607 \h 19
+Table 6: Ã nghÄ©a cÃ¡c tÃ­n hiá»‡u Ä‘áº§u vÃ o cá»§a module pe_unit trong phase PRELOAD MAC cá»§a module linear PAGEREF _Toc236056608 \h 20
+Table 7: Ã nghÄ©a cÃ¡c tÃ­n hiá»‡u Ä‘áº§u vÃ o cá»§a module pe_unit trong phase COMPUTE cá»§a module linear PAGEREF _Toc236056609 \h 20
+Table 8: Tham sá»‘ máº·c Ä‘á»‹nh cá»§a IP AXI Softmax PAGEREF _Toc236056610 \h 22
+Table 9: ThÃ´ng tin cÃ¡c FSM cá»§a module softmax PAGEREF _Toc236056611 \h 22
+Table 10: Báº£ng so sÃ¡nh sá»‘ cycle khi thay Ä‘á»•i NUM_WAYS PAGEREF _Toc236056612 \h 26
+Table 11: ThÃ´ng tin cÃ¡c IP Ä‘Æ°á»£c sá»­ dá»¥ng trong testbench PAGEREF _Toc236056613 \h 31
+Table 12: Äá»‹a chá»‰ cÃ¡c IP Ä‘Æ°á»£c sá»­ dá»¥ng trong testbench PAGEREF _Toc236056614 \h 31
+Table 13: ThÃ´ng sá»‘ chuáº©n hÃ³a khi mÃ´ phá»ng testbench PAGEREF _Toc236056615 \h 35
+Table 14: ThÃ´ng tin cÃ¡c IP Ä‘Æ°á»£c sá»­ dá»¥ng khi thá»±c thi trÃªn KV260 PAGEREF _Toc236056616 \h 37
+Table 15: Äá»‹a chá»‰ cÃ¡c IP Ä‘Æ°á»£c sá»­ dá»¥ng khi thá»±c thi trÃªn KV260 PAGEREF _Toc236056617 \h 38
+Table 16: ThÃ´ng sá»‘ chuáº©n hÃ³a Ä‘Æ°á»£c sá»­ dá»¥ng khi thá»±c thi trÃªn KV260 PAGEREF _Toc236056618 \h 39
+Table 17: Cáº¥u trÃºc thá»±c thi version 01 PAGEREF _Toc236056619 \h 40
+Table 18: ThÃ´ng sá»‘ report utilization cá»§a cáº¥u trÃºc version 01 PAGEREF _Toc236056620 \h 40
+Table 19: Cáº¥u trÃºc thá»±c thi version 02 PAGEREF _Toc236056621 \h 40
+Table 20: ThÃ´ng sá»‘ report utilization cá»§a cáº¥u trÃºc version 02 PAGEREF _Toc236056622 \h 41
+Table 21: Cáº¥u trÃºc thá»±c thi version 03 PAGEREF _Toc236056623 \h 41
+Table 22: ThÃ´ng sá»‘ report utilization cá»§a cáº¥u trÃºc version 03 PAGEREF _Toc236056624 \h 41
+Table 23: Báº£ng so sÃ¡nh thá»i gian cháº¡y hardware cáº¥u trÃºc version 02 vÃ  03 PAGEREF _Toc236056625 \h 51
+Table 24: Kiáº¿n trÃºc mÃ´ hÃ¬nh stories15M PAGEREF _Toc236056626 \h 51
+Table 25: ThÃ´ng tin chuáº©n giao tiáº¿p cá»§a cÃ¡c IP PAGEREF _Toc236056627 \h 53
+Table 26: TÃ i nguyÃªn token Ä‘Æ°á»£c sá»­ dá»¥ng cá»§a model Stories 15M PAGEREF _Toc236056628 \h 56
+Table 27: Thá»i gian cháº¡y attention score cá»§a model Stories 15M PAGEREF _Toc236056629 \h 56
+
+
+Tá»”NG QUAN
+Há»‡ thá»‘ng tÃ­nhÂ Softmax(Q Ã— Káµ€), trÃªn pháº§n cá»©ng Zynq UltraScale+ (KV260), Ä‘iá»u khiá»ƒn báº±ng bare-metal C qua Vitis hoáº·c Ubuntu Linux. Cáº¥u trÃºc 2 táº§ng:
+IP Linear: tÃ­nhÂ S = Q Ã— Káµ€.
+IP Softmax: nháº­nÂ S, tÃ­nh softmax score theo tá»«ng hÃ ng, tráº£ vá» attention weight (Q1.15 unsigned).
+Giao tiáº¿p luá»“ng dá»¯ liá»‡u (Data-path) xuyÃªn suá»‘t: DMA stream dá»¯ liá»‡u K, Q vÃ o IP Linear, IP Linear tÃ­nh toÃ¡n vÃ  stream trá»±c tiáº¿p káº¿t quáº£ sang IP Softmax (IP-to-IP), IP Softmax xuáº¥t káº¿t quáº£ cuá»‘i cÃ¹ng vá» láº¡i DMA
+Äiá»u khiá»ƒn: má»—i IP cÃ³ control-plane AXI4-Lite riÃªng (start/status), data-plane sá»­ dá»¥ng AXI4-Stream.
+Kiáº¿n trÃºc há»‡ thá»‘ng
+
+HÃ¬nh   SEQ HÃ¬nh_ \* ARABIC 1:  SÆ¡ Ä‘á»“ kiáº¿n trÃºc bus há»‡ thá»‘ng
+ThÃ´ng tin chuáº©n giao tiáº¿p cá»§a cÃ¡c IP Ä‘Æ°á»£c sá»­ dá»¥ng.
+Table  SEQ Table \* ARABIC 1:ThÃ´ng tin chuáº©n giao tiáº¿p cá»§a cÃ¡c IP
+
+Cáº¤U TRÃšC IP MATMUL LINEAR
+BÃ i nghiÃªn cá»©u Ä‘Ã£ cáº£i tiáº¿n cáº¥u trÃºc IP so vá»›i cáº¥u trÃºc cÅ© lÃ  dual axi lite dÃ¹ng Ä‘á»ƒ control vÃ  push data vÃ o IP Linear thÃ¬ cáº¥u trÃºc má»›i thá»±c hiá»‡n nhÆ° sau:
+Iterface gá»“m 1 axi lite control status cá»§a IP Linear nhÆ° push start signal hoáº·c read done, busy signal, vÃ  1 axi stream Ä‘á»ƒ push data vÃ o IP Ä‘á»ƒ tÃ­nh matmul.
+Giáº£m sá»‘ lÆ°á»£ng ip BRAM tá»« 4 ip q, k, v, sram cÃ²n 1 ip BRAM lÃ  k ram
+Master thay cho cpu thay vÃ¬ 2 axi vip thÃ¬ sá»­ dá»¥ng 1 axi vip. NgoÃ i ra, bÃ i nghiÃªn cá»©u Ä‘Ã£ thá»±c hiá»‡n tÃ­ch há»£p DMA káº¿t há»£p vá»›i IP Linear.
+Cáº¥u trÃºc IP AXI Linear bao gá»“m 1 AXI Lite accessible register vÃ  1 module linear giao tiáº¿p axi stream. Module linear cÃ³ module core thá»±c hiá»‡n matmul lÃ  matmul_ip, module nÃ y thá»±c hiá»‡n phÃ©p tÃ­nh matmul theo phÆ°Æ¡ng phÃ¡p SIMD-Broadcast thÃ´ng qua cÃ¡c pe, táº­p há»£p N pe sáº½ cÃ³ 1 sá»‘ lÆ°á»£ng tile, nguyÃªn lÃ½ hoáº¡t Ä‘á»™ng cá»§a cÃ¡c pe lÃ  module pe_unit.
+Cáº¥u trÃºc IP AXI Linear
+Cáº¥u trÃºc IP linear thá»±c hiá»‡n mix giá»¯a axi lite vÃ  axi stream:
+DMA sáº½ Ä‘Ã³ng vai trÃ² master stream data K vÃ  Q tá»« DDR hoáº·c BRAM bÃªn ngoÃ i vÃ o trong ip linear Ä‘á»ƒ thá»±c hiá»‡n phÃ©p tÃ­nh matmul vÃ  chia dmodel.
+Sau khi IP compute xong, thá»±c hiá»‡n truyá»n AXI stream ra ngoÃ i, Ä‘i vÃ o S2MM cá»§a DMA Ä‘á»ƒ DMA ghi xuá»‘ng DDR hoáº·c BRAM.
+
+
+HÃ¬nh   SEQ HÃ¬nh_ \* ARABIC 2: SÆ¡ Ä‘á»“ khá»‘i cáº¥u trÃºc IP Linear
+FSM IP AXI Linear
+
+HÃ¬nh   SEQ HÃ¬nh_ \* ARABIC 3: SÆ¡ Ä‘á»“ FSM Linear dáº¡ng Moore
+FSM cá»§a linear gá»“m 5 state, má»—i state cÃ³ cÃ´ng dá»¥ng nhÆ° sau:
+IDLE: tráº¡ng thÃ¡i tÄ©nh, Ä‘á»£i tÃ­nh hiá»‡u start thÃ´ng qua AXI Lite Ä‘á»ƒ chuyá»ƒn sang state LOAD K.
+LOAD K: IP BRAM trong linear sáº½ Ä‘Æ°á»£c load data cá»§a k ram thÃ´ng qua interface AXI stream, nguá»“n tá»« DMA Ä‘á»c trong DDR truyá»n tá»›i. Káº¿t thÃºc quÃ¡ trÃ¬nh nÃ y khi tÃ­n hiá»‡u tlast xuáº¥t hiá»‡n. State tiáº¿p theo lÃ  PRELOAD MAC
+PRELOAD MAC: tráº¡ng thÃ¡i preload data k ram vÃ o cÃ¡c pe cá»§a module matmul, má»—i pe lÃ  1 hÃ ng data cá»§a k ram, sá»‘ pe user cÃ³ thá»ƒ nháº­p input, náº¿u sá»‘ pe nhá» hÆ¡n d head (Sá»‘ hÃ ng cá»§a k ram) thÃ¬ matmul sáº½ sá»­ dá»¥ng phÆ°Æ¡ng phÃ¡p tilling.
+COMPUTE: DMA MM2S thá»±c hiá»‡n stream data Q vÃ o trong cÃ¡c pe Ä‘á»ƒ tÃ­nh toÃ¡n, má»—i láº§n thá»±c hiá»‡n stream 1 hÃ ng Q gá»“m d model = 64 pháº§n tá»­, cÃ¡c pe sáº½ tÃ­nh toÃ¡n vÃ  cho ra cÃ¹ng lÃºc 1 hÃ ng cá»§a score (Náº¿u N PE = D HEAD), náº¿u N PE < D HEAD thÃ¬ thá»±c hiá»‡n phÆ°Æ¡ng phÃ¡p tilling Ä‘áº¿n khi tÃ­nh xong 1 hÃ ng thÃ¬ xuáº¥t ra cá»•ng stream Ä‘áº¿n DMA S2MM, phÆ°Æ¡ng phÃ¡p tÃ­nh Ä‘Æ°á»£c Ã¡p dá»¥ng lÃ  SIMD-style inner product.
+Giáº£i thuáº­t thá»±c thi FSM Linear
+PhÃ¢n tÃ­ch tá»«ng giáº£i thuáº­t thá»±c thi trong má»—i state sáº½ Ä‘Æ°á»£c trÃ¬nh bÃ y trong pháº§n nÃ y.
+Báº¯t Ä‘áº§u tá»« state IDLE, tráº¡ng thÃ¡i tÄ©nh cá»§a IP, chá»‰ chuyá»ƒn sang tráº¡ng thÃ¡i tiáº¿p theo lÃ  LOAD K khi cÃ³ tÃ­n hiá»‡u start tá»« control plane tá»« Zynq UltraScale+ MPSoC, thÃ´ng qua giao tiáº¿p AXI Lite.
+
+HÃ¬nh   SEQ HÃ¬nh_ \* ARABIC 4: LÆ°u Ä‘á»“ giáº£i thuáº­t cá»§a IP BRAM k ram
+State LOAD K thá»±c hiá»‡n nháº­n data cá»§a ma tráº­n K tá»« DMA, thÃ´ng qua giao tiáº¿p AXI Stream, DMA sáº½ thá»±c hiá»‡n MM2S Ä‘á»ƒ láº¥y dá»¯ liá»‡u tá»« má»™t IP BRAM thÃ´ng qua má»™t IP BRAM Controller, giao tiáº¿p AXI. KÃ­ch thÆ°á»›c thá»±c thi lÃ  16x64, má»—i pháº§n tá»­ cÃ³ data width lÃ  32, address width lÃ  32, tÃ­n hiá»‡u tlast assert khi truyá»n Ä‘á»§ length dá»¯ liá»‡u cá»§a ma tráº­n K. Dá»¯ liá»‡u ma tráº­n K sáº½ Ä‘Æ°á»£c lÆ°u vÃ o má»™t IP BRAM k_ram trong IP Linear Ä‘á»ƒ tÃ­nh toÃ¡n. Khi DMA Ä‘áº©y data vÃ o IP k ram thÃ¬ Ä‘á»‹a chá»‰ sáº½ Ä‘Æ°á»£c cáº­p nháº­t liÃªn lá»¥c má»—i cycle Ä‘áº¿n khi tlast assert, Ä‘á»‹a chá»‰ chá»‰ Ä‘Æ°á»£c cáº­p nháº­t khi tÃ­n hiá»‡u wea Ä‘Æ°á»£c assert, Ä‘iá»u nÃ y chá»‰ xáº£y ra khi cÃ³ cáº£ cáº·p tÃ­n hiá»‡u valid vÃ  ready assert. State nÃ y done khi k load done assert, Ä‘iá»u nÃ y xáº£y ra khi cÃ³ tÃ­n hiá»‡u i s axis tlast assert.
+
+HÃ¬nh   SEQ HÃ¬nh_ \* ARABIC 5: LÆ°u Ä‘á»“ giáº£i thuáº­t state Preload mac
+State Preload Mac thá»±c hiá»‡n quÃ©t vÃ  náº¡p dá»¯ liá»‡u tá»« IP BRAM k ram, dÃ¹ng 3 bá»™ Ä‘á»‡m tá»« inner ra ngoÃ i lÃ  col, row, tile Ä‘á»ƒ duyá»‡t tá»«ng pháº§n tá»­ rá»“i Ä‘Æ°a vÃ o tá»«ng pe. Do IP BRAM set up cÃ³ latency lÃ  2 nÃªn cÃ³ thÃªm delay 2 cycle.
+Preload col k (0  D Model â€“ 1): Duyá»‡t tá»«ng cá»™t cá»§a hÃ ng K.
+Preload row j (0  N Pe â€“ 1): Khi háº¿t 1 hÃ ng K (col k cháº¡m max) thÃ¬ má»›i Ä‘á»•i sang pe tiáº¿p theo trong cÃ¹ng 1 tile.
+Preload tile idx (0  N Tiles â€“ 1): Khi háº¿t cáº£ N Pe hÃ ng trong tile hiá»‡n táº¡i thÃ¬ má»›i Ä‘á»•i sang tile tiáº¿p theo.
+Ba bá»™ Ä‘á»‡m táº¡o ra Ä‘á»‹a chá»‰ addr=tile_idx*N_PE+row j*D_MODEL+col k. Khi last addr Ä‘Æ°á»£c assert, cÃ¡c bá»™ Ä‘á»‡m delay 2 cycle Ä‘áº¡t max thÃ¬ preload done assert vÃ  chuyá»ƒn sang next state lÃ  COMPUTE.
+
+HÃ¬nh   SEQ HÃ¬nh_ \* ARABIC 6: LÆ°u Ä‘á»“ giáº£i thuáº­t 1 cá»§a state COMPUTE
+State COMPUTE thá»±c hiá»‡n nháº­n tá»«ng data Q tá»« DMA MM2S vÃ o vÃ  lÆ°u trong q buffer rá»™ng D model pháº§n tá»­. Sau khi náº¡p xong, phase 2 thá»±c hiá»‡n push q buffer vÃ o tá»«ng tile cá»§a submodule matmul, push Ä‘á»§ cho n tile, táº¥t cáº£ pe trong táº¥t cáº£ tile sáº½ thá»±c hiá»‡n nhÃ¢n q buffer[tile k cnt] vá»›i hÃ ng thá»© i cá»§a K ram (ÄÆ°á»£c lÆ°u trong pe thá»© i), káº¿t quáº£ Ä‘Æ°á»£c tÃ­ch lÅ©y, tiáº¿p theo push láº§n lÆ°á»£t cÃ¡c pháº§n tá»­ cÃ²n láº¡i cá»§a q buffer vÃ o, cho Ä‘áº¿n khi Ä‘á»§ sá»‘ pháº§n tá»­ 1 hÃ ng lÃ  d model pháº§n tá»­.
+
+HÃ¬nh   SEQ HÃ¬nh_ \* ARABIC 7: LÆ°u Ä‘á»“ giáº£i thuáº­t 2 cá»§a state COMPUTE
+Khi 1 tile tÃ­nh xong sá»‘ pe cá»§a tile Ä‘Ã³, káº¿t quáº£ sáº½ push vÃ o result buffer, quÃ¡ trÃ¬nh nÃ y láº·p láº¡i Ä‘áº¿n khi sá»‘ tile Ä‘áº¡t max. NghiÃªn cá»©u sá»­ dá»¥ng phÆ°Æ¡ng phÃ¡p double ping pong buffer, khi matmul tÃ­nh xong 1 hÃ ng sáº½ lÆ°u vÃ o result buffer[write], khi truyá»n serialize ra sáº½ stream result buffer[read] vá»›i read<=write; write<=~write, khi Ä‘Ã³ buffer write sáº½ idle vÃ  tiáº¿p tá»¥c thá»±c hiá»‡n lÆ°u káº¿t quáº£ tá»« row káº¿ tiáº¿p trong khi axis váº«n stream tá»«ng pháº§n tá»­ row hiá»‡n táº¡i lÃªn axis data Ä‘áº¿n IP Softmax. Khi truyá»n Ä‘á»§ seq len row cá»§a káº¿t quáº£ attention score thÃ¬ tlast assert vÃ  next state lÃ  ST DONE.
+
+Module matmul_ip
+Module matmul_ip thá»±c hiá»‡n phÃ©p nhÃ¢n matmul báº±ng phÆ°Æ¡ng phÃ¡p SIMD broadcast, thay vÃ¬ tÃ­nh dot-product cá»§a má»™t hÃ ng ma tráº­n A vÃ  má»™t cá»™t ma tráº­n B tuáº§n tá»± thÃ¬ phÆ°Æ¡ng phÃ¡p nÃ y thá»±c hiá»‡n láº¥y 1 pháº§n tá»­ cá»§a ma tráº­n A nhÃ¢n vá»›i tá»«ng hÃ ng cá»§a ma tráº­n B cÃ¹ng má»™t lÃºc. Sá»‘ lÆ°á»£ng N_PE náº¿u báº±ng sá»‘ hÃ ng cá»§a ma tráº­n K lÃ  N_COLS thÃ¬ sá»‘ lÆ°á»£ng tile lÃ  1, náº¿u nhá» hÆ¡n thÃ¬ sá»‘ tile Ä‘Æ°á»£c chia thÃ nh N_TILES nhá», má»—i tile chá»©a N_PE hoáº·c sá»‘ pe nhá» hÆ¡n N_PE náº¿u khÃ´ng chia Ä‘á»u. Ã nghÄ©a cá»§a cÃ¡c thÃ´ng sá»‘ tham sá»‘ hÃ³a trong module matmul_ip nhÆ° sau:
+Table  SEQ Table \* ARABIC 2: Parameter module matmul_ip
+
+Table  SEQ Table \* ARABIC 3: Localparameter module matmul_ip
+
+Do N_PE cÃ³ thá»ƒ nhá» hÆ¡n giÃ¡ trá»‹ sá»‘ hÃ ng cá»§a ma tráº­n K lÃ  N_COLS nÃªn sáº½ cÃ³ 2 ká»‹ch báº£n cÃ³ thá»ƒ xáº£y ra.
+
+
+HÃ¬nh   SEQ HÃ¬nh_ \* ARABIC 8: SÆ¡ Ä‘á»“ cáº¥u trÃºc náº¡p dá»¯ liá»‡u cho PE trong state COMPUTE vá»›i N TILES = 1
+Case 1: N_PE = N_COLS (N_TILES = 1)
+ToÃ n bá»™ N PE hoáº¡t Ä‘á»™ng nhÆ° N PE nhÃ¡nh song song, cÃ¹ng chia sáº» má»™t bus dá»¯ liá»‡u Ä‘áº§u vÃ o, táº¡i state PRELOAD MAC, i_preload_data (giÃ¡ trá»‹ K[j][k] táº¡i hÃ ng j, cá»™t  k) Ä‘Æ°á»£c broadcast tá»›i táº¥t cáº£ N_PE instance, chá»‰ PE cÃ³ index  báº±ng i_preload_j (hÃ ng j cá»§a K) má»›i Ä‘Æ°á»£c ghi data vÃ o buffer máº£ng weight, cá»¥ thá»ƒ pe_preload_en = i_preload_en & (i_preload_j == gp) cho phÃ©p táº¡o cÃ¡c báº£n pe_preload_en riÃªng biá»‡t. Sau N_PexD_MODEL cycle ghi tuáº§n tá»±, má»—i PE lÆ°u Ä‘Ãºng 1 hÃ ng cá»§a ma tráº­n K (PE thá»© j lÆ°u táº¥t cáº£ pháº§n tá»­ cá»§a hÃ ng thá»© j cá»§a ma tráº­n K).
+Táº¡i state COMPUTE, toÃ n bá»™ N_PE sáº½ cÃ¹ng nháº­n 1 giÃ¡ trá»‹ i_a_data = Q[i][k] (giÃ¡ trá»‹ pháº§n tá»­ táº¡i hÃ ng i, cá»™t k cá»§a Q) trong cÃ¹ng 1 cycle. BÃªn trong má»—i  PE, weight_mux chá»n ra weight[i_tile_sel][i_k_index], táº¡i case nÃ y i_tile_sel=0, phÃ©p nhÃ¢n cá»™ng tÃ­ch lÅ©y i_a_data*weight_mux Ä‘Æ°á»£c lÆ°u vÃ o acc, qua D_MODEL cycle thÃ¬ phÃ©p matmul sáº½ tÃ­nh xong phÃ©p nhÃ¢n ma tráº­n Q*KT cá»§a má»™t hÃ ng, káº¿t quáº£ Ä‘Æ°á»£c xuáº¥t ra o_result lÃ  array cÃ³ kÃ­ch thÆ°á»›c D_MODEL. 
+
+HÃ¬nh   SEQ HÃ¬nh_ \* ARABIC 9: LÆ°u Ä‘á»“ giáº£i thuáº­t cá»§a submodule matmul_ip trong 2 state PRELOAD MAC vÃ  COMPUTE cá»§a module linear trÆ°á»ng há»£p N PE = N COLS
+
+
+
+HÃ¬nh   SEQ HÃ¬nh_ \* ARABIC 10: SÆ¡ Ä‘á»“ cáº¥u trÃºc náº¡p dá»¯ liá»‡u cho PE trong state COMPUTE vá»›i N TILES > 1
+Case 2: N_PE < N_COLS (N_TILES > 1)
+Khi N_PE nhá» hÆ¡n N COLS, sá»‘ lÆ°á»£ng PE váº­t lÃ½ khÃ´ng Ä‘á»§ Ä‘á»ƒ giá»¯ toÃ n bá»™ sá»‘ lÆ°á»£ng N COLS hÃ ng cá»§a ma tráº­n K cÃ¹ng lÃºc. Thá»±c hiá»‡n phÃ¢n tÃ¡ch thÃ nh nhiá»u Tile khÃ¡c nhau, má»—i tile chá»©a N PE hoáº·c sá»‘ lÆ°á»£ng Ã­t hÆ¡n, Ä‘á»‹a chá»‰ cá»§a má»—i data khi Ä‘Æ°á»£c ghi vÃ o pe sáº½ lÃ  hÃ ng thá»© (tile*N_PE+j), cá»™t thá»© k, nghÄ©a lÃ  i_preload_data = K[tile*N_PE+j; k], data Ä‘Æ°á»£c ghi vÃ o Ä‘Ãºng bank tile Ä‘Æ°á»£c chá»n lÃ  weight[i_preload_tile_sel]. Datapath weight khÃ´ng bá»‹ ghi Ä‘Ã¨ giá»¯a cÃ¡c tile, cho phÃ©p preload trÆ°á»›c nhiá»u tile rá»“i má»›i compute.
+Táº¡i state COMPUTE cá»§a module linear, tÆ°Æ¡ng tá»± case 1, data Q váº«n sáº½ Ä‘Æ°á»£c Ä‘áº©y vÃ o cÃ¡c pe Ä‘á»ƒ tÃ­nh matmul, nhÆ°ng sau D MODEL cycle chá»‰ tÃ­nh Ä‘Æ°á»£c N_PE pe, cáº§n qua Ä‘Ãºng N_TILES x D_MODEL cycle má»›i cho ra Ä‘Ãºng káº¿t quáº£ má»™t hÃ ng cá»§a ma tráº­n attention score.
+
+
+HÃ¬nh   SEQ HÃ¬nh_ \* ARABIC 11: LÆ°u Ä‘á»“ giáº£i thuáº­t cá»§a submodule matmul_ip trong 2 state PRELOAD MAC vÃ  COMPUTE cá»§a module linear trÆ°á»ng há»£p N PE < N COLS 
+
+
+Module pe_unit â€“ Khá»‘i pe thá»±c hiá»‡n nhÃ¢n cá»™ng tÃ­ch lÅ©y
+Module pe_unit thá»±c hiá»‡n phÃ©p nhÃ¢n cá»™ng tÃ­ch lÅ©y, cÃ¡c thÃ´ng sá»‘ máº·c Ä‘á»‹nh cho module nhÆ° sau:
+Table  SEQ Table \* ARABIC 4: Parameter module pe_unit
+
+Table  SEQ Table \* ARABIC 5: Localparameter module pe_unit
+
+
+HÃ¬nh   SEQ HÃ¬nh_ \* ARABIC 12: LÆ°u Ä‘á»“ giáº£i thuáº­t pháº§n má»m cá»§a module pe_unit
+Submodule pe_unit hoáº¡t Ä‘á»™ng chá»§ yáº¿u dá»±a trÃªn 2 state chÃ­nh cá»§a module linear lÃ  PRELOAD MAC vÃ  COMPUTE, 
+Trong state PRELOAD MAC, cÃ¡c tÃ­n hiá»‡u input cÃ³ Ã½ nghÄ©a:
+Table  SEQ Table \* ARABIC 6: Ã nghÄ©a cÃ¡c tÃ­n hiá»‡u Ä‘áº§u vÃ o cá»§a module pe_unit trong phase PRELOAD MAC cá»§a module linear
+Khi cÃ³ tÃ­n hiá»‡u en, pe thá»±c hiá»‡n lÆ°u pháº§n tá»­ trong hÃ ng cá»§a K matrix vÃ o buffer hÃ ng trong pe, Ä‘á»‹a chá»‰ Ä‘Æ°á»£c quyáº¿t Ä‘á»‹nh vÃ o signal i_preload_tile_sel vÃ  i_preload_k, data lÃ  i_preload_data, buffer cÃ³ kÃ­ch thÆ°á»›c N_TILES x D_MODEL.
+Trong state COMPUTE cá»§a module linear, cÃ¡c tÃ­n hiá»‡u input vÃ o module pe_unit
+Table  SEQ Table \* ARABIC 7: Ã nghÄ©a cÃ¡c tÃ­n hiá»‡u Ä‘áº§u vÃ o cá»§a module pe_unit trong phase COMPUTE cá»§a module linear
+
+Khi cÃ³ tÃ­n hiá»‡u i_compute_en, pe_unit sáº½ xÃ¡c Ä‘á»‹nh coi cÃ³ pháº£i lÃ  tÃ­n hiá»‡u Ä‘áº§u tiÃªn cá»§a 1 phÃ©p dot_product má»›i khÃ´ng, náº¿u pháº£i thÃ¬ sáº½ lÆ°u má»›i giÃ¡ trá»‹ i_broadcast + weigh[i_tile_sel][i_k_index] vÃ o acc, cÃ²n náº¿u khÃ´ng thÃ¬ sáº½ nhÃ¢n cá»™ng tÃ­ch lÅ©y vÃ o biáº¿n acc vá»›i giÃ¡ trá»‹ dot-product i_broadcast + weigh[i_tile_sel][i_k_index].
+Cáº¤U TRÃšC IP SOFTMAX SCORE
+Cáº¥u trÃºc IP AXI Softmax
+
+HÃ¬nh   SEQ HÃ¬nh_ \* ARABIC 13: SÆ¡ Ä‘á»“ khá»‘i cáº¥u trÃºc IP Softmax
+IP Softmax gá»“m 2 pháº§n, control plane vÃ  data plane. Control plane Ä‘Æ°á»£c SoC Ä‘iá»u khiá»ƒn vá»›i interface AXI Lite, data plane Ä‘Æ°á»£c káº¿t ná»‘i AXI Stream vá»›i IP Linear vÃ  IP DMA.
+FSM IP Softmax
+
+HÃ¬nh   SEQ HÃ¬nh_ \* ARABIC 14: FSM IP Softmax dáº¡ng Moore
+Tham sá»‘ máº·c Ä‘á»‹nh cá»§a IP AXI Softmax:
+Table  SEQ Table \* ARABIC 8: Tham sá»‘ máº·c Ä‘á»‹nh cá»§a IP AXI Softmax
+
+Table  SEQ Table \* ARABIC 9: ThÃ´ng tin cÃ¡c FSM cá»§a module softmax
+
+Giáº£i thuáº­t thá»±c thi FSM Softmax score
+PhÃ¢n tÃ­ch tá»«ng giáº£i thuáº­t thá»±c thi trong má»—i state sáº½ Ä‘Æ°á»£c trÃ¬nh bÃ y trong pháº§n nÃ y.
+Báº¯t Ä‘áº§u tá»« state IDLE, tráº¡ng thÃ¡i tÄ©nh cá»§a IP, chá»‰ chuyá»ƒn sang tráº¡ng thÃ¡i tiáº¿p theo lÃ  LOAD ROW khi cÃ³ tÃ­n hiá»‡u start tá»« control plane tá»« Zynq UltraScale+ MPSoC, thÃ´ng qua giao tiáº¿p AXI Lite.
+
+HÃ¬nh   SEQ HÃ¬nh_ \* ARABIC 15: LÆ°u Ä‘á»“ giáº£i thuáº­t cá»§a FSM Load Row
+State Load Row thá»±c hiá»‡n load tá»«ng hÃ ng cá»§a ma tráº­n input vÃ o cho hÃ m softmax, ma tráº­n Ä‘Ã³ lÃ  attention score hay score, Ä‘Æ°á»£c lÆ°u trong score buffer vÃ  Ä‘Æ°á»£c DMA MM2S truyá»n vÃ o thÃ´ng qua AXI Stream. Data truyá»n vÃ o má»—i láº§n cÃ³ sá»‘ pháº§n tá»­ lÃ  sá»‘ pháº§n tá»­ cá»§a 1 row trong score. Khi truyá»n Ä‘á»§ D Head pháº§n tá»­ thÃ¬ load row done assert. Next state lÃ  ST FIND MAX.
+
+HÃ¬nh   SEQ HÃ¬nh_ \* ARABIC 16: LÆ°u Ä‘á»“ giáº£i thuáº­t cá»§a FSM state Find Max
+State Find Max thá»±c hiá»‡n duyá»‡t qua tá»«ng pháº§n tá»­ trong row Ä‘á»ƒ tÃ¬m pháº§n tá»­ cÃ³ giÃ¡ trá»‹ lá»›n nháº¥t, quÃ¡ trÃ¬nh duyá»‡t dá»±a trÃªn index trong array score buffer, khi pháº§n tá»­ Ä‘Æ°á»£c duyá»‡t cÃ³ giÃ¡ trá»‹ lá»›n hÆ¡n giÃ¡ trá»‹ max hiá»‡n táº¡i thÃ¬ sáº½ update giÃ¡ trá»‹ max. Khi duyá»‡t Ä‘á»§ sá»‘ lÆ°á»£ng pháº§n tá»­ thÃ¬ next state lÃ  ST EXP SUM.
+
+HÃ¬nh   SEQ HÃ¬nh_ \* ARABIC 17: LÆ°u Ä‘á»“ giáº£i thuáº­t cá»§a FSM Exp Sum
+State Exp Sum thá»±c hiá»‡n pipeline cho 3 nhiá»‡m vá»¥ chÃ­nh, sá»­ dá»¥ng phÆ°Æ¡ng phÃ¡p chuáº©n hÃ³a z=x-maxâ¡(x), phÆ°Æ¡ng phÃ¡p LUT Ä‘á»ƒ tÃ­nh hÃ m exp cá»§a z-tÃ­nh tá»•ng acc cá»§a exp(z). Sá»­ dá»¥ng IP ROM lÃ  exp rom cho LUT, Ä‘á»‹a chá»‰ Ä‘Æ°á»£c encode lÃ  11 bit cuá»‘i cá»§a -z (do z cÃ³ giÃ¡ trá»‹ Ã¢m), Ä‘á»‹a chá»‰ nÃ y cho ra exp rom data (latency=1), chÃºng ta ghi giÃ¡ trá»‹ exp nÃ y vÃ o 1 buffer exp Ä‘á»ƒ dÃ¹ng cho state sau. Tiáº¿p theo, thá»±c hiá»‡n acc cho giÃ¡ trá»‹ data nÃ y, quÃ¡ trÃ¬nh nÃ y káº¿t thÃºc khi idx = d head vÃ  exp sum done assert, next state lÃ  ST_RECIP_PREP.
+
+HÃ¬nh   SEQ HÃ¬nh_ \* ARABIC 18: LÆ°u Ä‘á»“ giáº£i thuáº­t FSM cá»§a ST DIV ISSUE vÃ  ST DIV DRAIN
+
+
+
+HÃ¬nh   SEQ HÃ¬nh_ \* ARABIC 19: LÆ°u Ä‘á»“ giáº£i thuáº­t thá»±c thi state ST_DIV_ISSUE
+State ST_RECIP_PREP chá»‰ cháº¡y má»™t láº§n cho má»—i row, PhÃ©p tÃ­nh nÃ y thá»±c thi trong 2 cycle, cycle Ä‘áº§u thá»±c hiá»‡n tÃ­nh sáºµn biá»ƒu thá»©c sum(exp(z)) tá»« LUT cá»§a IP ROM vá»›i latency lÃ  1, káº¿t quáº£ lÆ°u trong signal precomp_recip, vÃ  cycle 2 thá»±c thi tÃ­nh sá»‘ bit cáº§n shift cá»§a káº¿t quáº£ softmax cá»§a má»—i pháº§n tá»­ thuá»™c row, káº¿t quáº£ lÆ°u trong signal precomp_shift. NUM_WAYS lÃ  sá»‘ phÃ©p nhÃ¢n song song Ä‘Æ°á»£c thá»±c thi, khi NUM_WAYS thÃ¬ sáº½ giáº£m sá»‘ lÆ°á»£ng cycle cáº§n Ä‘á»ƒ tÃ­nh toÃ¡n sáº½ Ä‘Æ°á»£c giáº£m Ä‘i 1NUM_WAYS láº§n, trong khi NUM_WAYS = 1 cho ra sá»‘ cycle cáº§n thiáº¿t lÃ  18 cycle vá»›i D_HEAD = 16.
+Table  SEQ Table \* ARABIC 10: Báº£ng so sÃ¡nh sá»‘ cycle khi thay Ä‘á»•i NUM_WAYS
+
+ST_DIV_ISSUE thá»±c thi nhiá»‡m vá»¥ phÃ©p chia expâ¡(z)/(sum[expâ¡(z)]) vÃ  lÆ°u káº¿t quáº£ trong out buffer. Trong Div Issue, dividend Ä‘Æ°á»£c assign lÃ  tá»«ng pháº§n tá»­ trong exp row buffer, divisor lÃ  sum cá»§a row Ä‘ang xÃ©t, thá»±c hiá»‡n truyá»n hai thÃ´ng sá»‘ nÃ y vÃ o module reciprocal divider Ä‘á»ƒ thá»±c hiá»‡n phÃ©p chia. Khi thá»±c hiá»‡n Ä‘á»§ cho 1 row thÃ¬ chuyá»ƒn sang state tiáº¿p theo lÃ  SERIALIZE
+Module reciprocal_divider
+
+HÃ¬nh   SEQ HÃ¬nh_ \* ARABIC 20: LÆ°u Ä‘á»“ giáº£i thuáº­t thá»±c thi module reciprocal_divider
+Trong thiáº¿t káº¿ module reciprocal divider, káº¿t quáº£ chia Ä‘Æ°á»£c biá»ƒu diá»…n dáº¡ng Q1.15 unsigned, 1 bit ngáº§m Ä‘á»‹nh cho pháº§n nguyÃªn (luÃ´n báº±ng 0 vÃ¬ thÆ°Æ¡ng sá»‘ expsum luÃ´n nhá» hÆ¡n 1).  Sá»­ dá»¥ng ká»¹ thuáº­t range reduction tÃ¡ch divisor thÃ nh dáº¡ng mantissa nhÃ¢n cho lÅ©y thá»«a cá»§a msb, dividor=mantissar*2msb , mantissa Ïµ [1.0, 2.0), sau Ä‘Ã³ ta Ã¡p dá»¥ng phÆ°Æ¡ng phÃ¡p LUT cho mantissa trong khoáº£ng [1.0, 2.0) báº±ng IP ROM, cá»¥ thá»ƒ lÃ  lÆ°u cÃ¡c giÃ¡ trá»‹ trong ROM cá»§a biáº¿n 1mantissa. Module nÃ y Ä‘Æ°á»£c thá»±c thi vá»›i kiáº¿n trÃºc pipeline 3 táº§ng:
+Stage 0 â€“ Find MSB: Priority encoder duyá»‡t divisor tá»« bit cao nháº¥t xuá»‘ng, xÃ¡c Ä‘á»‹nh msb pos. Láº¥y ADDR W bit liá»n ká» dÆ°á»›i MSB lÃ m Ä‘á»‹a chá»‰ tra ROM, Ä‘Ã¢y chÃ­nh lÃ  pháº§n fractional cá»§a mantissa sau khi Ä‘Ã£ chuáº©n hÃ³a (bit MSB=1 khÃ´ng cáº§n lÆ°u vÃ¬ luÃ´n ngáº§m Ä‘á»‹nh báº±ng 1).
+Stage 1 â€“ ROM read (latency 1 cycle): Äá»‹a chá»‰ tá»« Stage 0 Ä‘Æ°á»£c Ä‘Æ°a vÃ o recip_rom (Block Memory Generator IP, ná»™i dung sinh tá»« golden model offline), tráº£ vá» giÃ¡ trá»‹ 1mantissa dáº¡ng Q0.19 unsigned. Khi Ä‘Ã³, phÃ©p chia cáº§n tÃ­nh trá»Ÿ thÃ nh phÃ©p nhÃ¢n.
+dividenddivisor=dividend*(1mantissa*2-msbpos)
+Stage 2 â€“ Multiply shift: NhÃ¢n dividend Ã— recip_rom_data, sau Ä‘Ã³ dá»‹ch pháº£i (OUT_W + msb_pos) bit Ä‘á»ƒ khá»›p láº¡i scale mong muá»‘n (Q1.15), phÃ©p dá»‹ch pháº£i cÃ³ bao gá»“m OUT_W lÃ  do trÆ°á»›c Ä‘Ã³ giÃ¡ trá»‹ 1mantissa chá»‰ láº£ giÃ¡ trá»‹ Ä‘Æ°á»£c scale lÃªn OUT_W láº§n, khÃ´ng pháº£i giÃ¡ trá»‹ thá»±c. 
+
+HÃ¬nh   SEQ HÃ¬nh_ \* ARABIC 21: LÆ°u Ä‘á»“ giáº£i thuáº­t cá»§a FSM SERIALIZE
+ST SERIALIZER thá»±c hiá»‡n quÃ©t tá»«ng pháº§n tá»­ trong out buffer, sau Ä‘Ã³ push lÃªn axis tdata Ä‘á»ƒ truyá»n data ra ngoÃ i, quÃ¡ trÃ¬nh truyá»n káº¿t thÃºc khi col = D HEAD vÃ  row = SEQ LEN, khi Ä‘Ã³ tlast Ä‘Æ°á»£c assert, IP Softmax hoÃ n thÃ nh nhiá»‡m vá»¥ tÃ­nh toÃ¡n Softmax score.
+TILING Dá»® LIá»†U Äáº¦U VÃ€O KÃCH THÆ¯á»šC Lá»šN Cáº¤U TRÃšC DMA â€“ IP AXI LINEAR â€“ IP AXI SOFTMAX
+Thiáº¿t káº¿ hiá»‡n táº¡i Ä‘Æ°á»£c Ä‘Ã³ng gÃ³i vÃ  váº­n hÃ nh vá»›i cÃ¡c thÃ´ng sá»‘ SEQ_LEN = 16; D_HEAD = 16; D_MODEL = 64, N_PE = 16, NUM_WAYS = 8. NÃªn náº¿u dá»¯ liá»‡u Ä‘áº§u vÃ o cÃ³ kÃ­ch thÆ°á»›c SEQ_LEN lá»›n hÆ¡n 16 thÃ¬ sáº½ khÃ´ng Ä‘á»§ bá»™ nhá»› BRAM lÆ°u trá»¯, cÅ©ng nhÆ° cÃ¡c IP sáº½ khÃ´ng thá»ƒ váº­n hÃ nh. Giáº£i phÃ¡p Ä‘Æ°á»£c Ä‘á» ra lÃ  tiling ma tráº­n Ä‘áº§u vÃ o khi SEQ_LEN thay Ä‘á»•i, D_HEAD vÃ  D_MODEL giá»¯ nguyÃªn (2 thÃ´ng sá»‘ nÃ y cáº§n Ä‘Æ°á»£c giá»¯ nguyÃªn do náº¿u tiling thÃ¬ IP AXI Softmax sáº½ Ä‘Æ°a ra káº¿t quáº£ sai). VÃ­ dá»¥, chÃºng ta cho phÃ©p nhÃ¢n thÃ nh Q[32x64] nhÃ¢n vá»›i K[16x64], Q sáº½ Ä‘Æ°á»£c tiling thÃ nh Q0[16X64] vÃ  Q1[16x64], phÃ©p nhÃ¢n Q*KT sáº½ Ä‘Æ°á»£c tÃ­nh thÃ nh Q0*KT vÃ  Q1*KT.
+
+HÃ¬nh   SEQ HÃ¬nh_ \* ARABIC 22: LÆ°u Ä‘á»“ giáº£i thuáº­t pháº§n má»m thá»±c hiá»‡n tiling ma tráº­n Q khi tÄƒng SEQ_LEN
+MÃ” PHá»ŽNG VIVADO Cáº¤U TRÃšC DMA â€“ IP AXI LINEAR â€“ IP AXI SOFTMAX
+Cáº¥u trÃºc thá»±c thi
+Cáº¥u trÃºc pháº§n cá»©ng khi mÃ´ phá»ng:
+
+HÃ¬nh   SEQ HÃ¬nh_ \* ARABIC 23: SÆ¡ Ä‘á»“ cáº¥u trÃºc cÃ¡c IP giao tiáº¿p khi mÃ´ phá»ng trÃªn Vivado
+Cáº¥u trÃºc block design:
+
+HÃ¬nh   SEQ HÃ¬nh_ \* ARABIC 24: Block Design mÃ´ phá»ng Vivado
+Cáº¥u trÃºc mÃ´ phá»ng sáº½ bao gá»“m cÃ¡c ip sau:
+Table  SEQ Table \* ARABIC 11: ThÃ´ng tin cÃ¡c IP Ä‘Æ°á»£c sá»­ dá»¥ng trong testbench
+
+Äá»‹a chá»‰ vÃ  kÃ­ch thÆ°á»›c bá»™ nhá»› cho cÃ¡c IP:
+Table  SEQ Table \* ARABIC 12: Äá»‹a chá»‰ cÃ¡c IP Ä‘Æ°á»£c sá»­ dá»¥ng trong testbench
+Cáº¥u trÃºc mÃ´ phá»ng
+
+HÃ¬nh   SEQ HÃ¬nh_ \* ARABIC 25: SÆ¡ Ä‘á»“ PS lai PL cáº¥u trÃºc mÃ´ phá»ng
+Cáº¥u trÃºc mÃ´ phá»ng chÃ­nh sáº½ lÃ  golden model sinh ra cÃ¡c file mem data input vÃ  cÃ¡c mem file golden cho softmax score vÃ  attention score, testbench sáº½ thá»±c hiá»‡n so sÃ¡nh káº¿t quáº£ tá»« RTL vÃ  Golden mem file Ä‘á»ƒ Ä‘á»‘i chiáº¿u.
+
+
+
+
+HÃ¬nh   SEQ HÃ¬nh_ \* ARABIC 26: SÆ¡ Ä‘á»“ khá»‘i PL thá»±c hiá»‡n testbench
+
+
+
+Testbench thá»±c hiá»‡n xÃ¡c thá»±c end-to-end pipeline ip_axi_linear â†’ softmax báº±ng phÆ°Æ¡ng phÃ¡p so sÃ¡nh vá»›i golden model, thÃ´ng qua AXI VIP Ä‘iá»u khiá»ƒn DMA vÃ  IP dÆ°á»›i test. Flow gá»“m 4 giai Ä‘oáº¡n tuáº§n tá»±:
+Giai Ä‘oáº¡n 1 â€“ Chuáº©n bá»‹ dá»¯ liá»‡u (Init): Task init_src_data() Ä‘á»c dá»¯ liá»‡u K, Q tá»« file .mem (dump tá»« golden model Python: k_ram.mem, q_ram.mem) vÃ  golden score ká»³ vá»ng tá»« golden_softmax.mem vÃ o máº£ng golden_score[] trong testbench, dÃ¹ng lÃ m reference cho bÆ°á»›c so sÃ¡nh cuá»‘i.
+Giai Ä‘oáº¡n 2 â€“ Preload BRAM nguá»“n: Task preload_bram_src() ghi trá»±c tiáº¿p K, Q data vÃ o BRAM src thÃ´ng qua giao diá»‡n AXI-Lite cá»§a AXI VIP, táº¡i Ä‘á»‹a chá»‰ cá»‘ Ä‘á»‹nh K_BASE = SRC_BASE, Q_BASE = SRC_BASE + NUM_BYTES_K. ÄÃ¢y lÃ  bÆ°á»›c náº¡p sáºµn dá»¯ liá»‡u vÃ o memory-mapped source trÆ°á»›c khi kÃ­ch hoáº¡t DMA, mÃ´ phá»ng Ä‘Ãºng luá»“ng dá»¯ liá»‡u thá»±c táº¿ (memory â†’ DMA â†’ IP) thay vÃ¬ Ä‘Æ°a tháº³ng qua testbench.
+Giai Ä‘oáº¡n 3 â€“ Váº­n hÃ nh DMA (2 sub-giai Ä‘oáº¡n):
+dma_reset(): assert reset bit qua AXI VIP, Ä‘Æ°a DMA vá» tráº¡ng thÃ¡i sáº¡ch trÆ°á»›c khi test, trÃ¡nh tráº¡ng thÃ¡i tá»“n dÆ° tá»« láº§n cháº¡y trÆ°á»›c áº£nh hÆ°á»Ÿng káº¿t quáº£.
+dma_start_transfer(): chuá»—i thao tÃ¡c Ä‘iá»u khiá»ƒn 2 kÃªnh DMA tuáº§n tá»± 
+KÃªnh MM2S (Memory-to-Stream) láº§n 1: set MM2S_SA = K_BASE, assert start signal cá»§a ip_axi_linear, set length = Depth_K Ã— 4 byte, chá» wait_mm2s_done().
+Clear bit IOC (Interrupt-on-Complete) trong DMASR, re-assert start signal IP Ä‘á»ƒ chuáº©n bá»‹ nháº­n beat tiáº¿p theo.
+KÃªnh S2MM (Stream-to-Memory) Ä‘á»“ng thá»i Ä‘Æ°á»£c cáº¥u hÃ¬nh: S2MM_DA = DST_BASE, length = Softmax_score_depth Ã— 4 byte, nháº­n káº¿t quáº£ tá»« output stream cá»§a IP ghi ngÆ°á»£c vÃ o BRAM Ä‘Ã­ch.
+KÃªnh MM2S láº§n 2: set MM2S_SA = Q_BASE, length = Depth_Q Ã— 4, Ä‘áº©y tiáº¿p Q data vÃ o IP.
+Chá» Ä‘á»“ng thá»i wait_mm2s_done() vÃ  wait_s2mm_done(), Ä‘áº£m báº£o cáº£ luá»“ng Ä‘áº©y vÃ o (K, Q) vÃ  luá»“ng nháº­n káº¿t quáº£ ra (softmax score) Ä‘á»u hoÃ n táº¥t trÆ°á»›c khi sang bÆ°á»›c so sÃ¡nh.
+Giai Ä‘oáº¡n 4 â€“ So sÃ¡nh káº¿t quáº£ (Compare): Task compare_bram_dst_with_golden_model() Ä‘á»c tá»«ng word tá»« DST_BASE qua AXI VIP (axi_read), so sÃ¡nh vá»›i golden_score[i] Ä‘Ã£ náº¡p á»Ÿ Giai Ä‘oáº¡n 1. Vá»›i má»—i pháº§n tá»­ khÃ´ng khá»›p, in ra chá»‰ sá»‘, giÃ¡ trá»‹ ká»³ vá»ng, giÃ¡ trá»‹ thá»±c Ä‘o, vÃ  Ä‘á»™ lá»‡ch (delta) Ä‘á»ƒ phá»¥c vá»¥ debug, náº¿u toÃ n bá»™ khá»›p thÃ¬ in PASS.
+Káº¿t quáº£ mÃ´ phá»ng
+Thá»±c hiá»‡n mÃ´ phá»ng vá»›i bá»™ thÃ´ng sá»‘ Ä‘áº§u vÃ o nhÆ° sau:
+Table  SEQ Table \* ARABIC 13: ThÃ´ng sá»‘ chuáº©n hÃ³a khi mÃ´ phá»ng testbench
+
+
+HÃ¬nh   SEQ HÃ¬nh_ \* ARABIC 27: Káº¿t quáº£ tcl cá»§a tb vÃ  giÃ¡ trá»‹ rtl softmax Ä‘Æ°á»£c lÆ°u trong mem file
+
+Káº¿t quáº£ mÃ´ phá»ng cho Ä‘Ãºng softmax 16x16 pháº§n tá»­ giá»‘ng vá»›i golden softmax score, káº¿t quáº£ waveform cÅ©ng cho cÃ¡c giÃ¡ trá»‹ Ä‘Æ°á»£c push vÃ o trong IP BRAM DST.
+
+HÃ¬nh   SEQ HÃ¬nh_ \* ARABIC 28: Softmax data Ä‘Æ°á»£c push vÃ o BRAM DST tá»« DMA S2MM
+THá»°C HIá»†N TRÃŠN KV260 Cáº¤U TRÃšC DMA â€“ IP AXI LINEAR â€“ IP AXI SOFTMAX
+Cáº¥u trÃºc thá»±c thi
+Cáº¥u trÃºc pháº§n cá»©ng khi thá»±c thi:
+
+HÃ¬nh   SEQ HÃ¬nh_ \* ARABIC 29: SÆ¡ Ä‘á»“ khá»‘i cáº¥u trÃºc cÃ¡c IP giao tiáº¿p khi thá»±c thi trÃªn KV260
+Cáº¥u trÃºc Block Design:
+
+HÃ¬nh   SEQ HÃ¬nh_ \* ARABIC 30: Cáº¥u trÃºc Block Design
+Cáº¥u trÃºc mÃ´ phá»ng sáº½ bao gá»“m cÃ¡c ip sau:
+Table  SEQ Table \* ARABIC 14: ThÃ´ng tin cÃ¡c IP Ä‘Æ°á»£c sá»­ dá»¥ng khi thá»±c thi trÃªn KV260
+
+Memory mapping
+Äá»‹a chá»‰ vÃ  kÃ­ch thÆ°á»›c bá»™ nhá»› cho cÃ¡c IP:
+Table  SEQ Table \* ARABIC 15: Äá»‹a chá»‰ cÃ¡c IP Ä‘Æ°á»£c sá»­ dá»¥ng khi thá»±c thi trÃªn KV260
+
+SÆ¡ Ä‘á»“ khá»‘i luá»“ng thá»±c thi Ä‘Æ°á»£c chia ra thÃ nh hai phÆ°Æ¡ng phÃ¡p, phÆ°Æ¡ng phÃ¡p Ä‘áº§u tiÃªn lÃ  boot dá»± Ã¡n báº±ng JTAG, code C thÃ´ng qua pháº§n má»m Vitis IDE hay cÃ²n gá»i lÃ  Baremetal, phÆ°Æ¡ng phÃ¡p cÃ²n láº¡i lÃ  boot báº±ng linux ubuntu thÃ´ng qua tháº» microSD:
+
+HÃ¬nh   SEQ HÃ¬nh_ \* ARABIC 31: SÆ¡ Ä‘á»“ khá»‘i luá»“ng thá»±c thi báº±ng Baremetal
+
+HÃ¬nh   SEQ HÃ¬nh_ \* ARABIC 32: SÆ¡ Ä‘á»“ khá»‘i luá»“ng thá»±c thi báº±ng linux thÃ´ng qua SD card
+Do linux quáº£n lÃ½ bá»™ nhá»› thÃ´ng qua cÆ¡ cháº¿ Bá»™ nhá»› áº£o vÃ  khá»‘i pháº§n cá»©ng MMU, nÃªn má»i chÆ°Æ¡ng trÃ¬nh C chá»‰ Ä‘Æ°á»£c cháº¡y trong vÃ¹ng áº£o. Linux khÃ´ng cho phÃ©p chÆ°Æ¡ng trÃ¬nh C khai bÃ¡o con trá» chá»‰ tháº³ng vÃ o Ä‘áº¡i chá»‰ váº­t lÃ½.
+Code C sá»­ dá»¥ng /dev/mem, Ä‘Ã¢y lÃ  file Ä‘áº¡i diá»‡n cho toÃ n bá»™ bane Ä‘á»“ khÃ´ng gian bá»™ nhá»› váº­t lÃ½ cá»§a chip Zynq, file nÃ y sáº½ yÃªu cÃ u linux ná»‘i Ä‘á»‹a chá»‰ váº­t lÃ½ vá»›i con trá» áº£o há»£p lá»‡ Ä‘á»ƒ sá»­ dá»¥ng.
+ThÃ´ng sá»‘ thiáº¿t láº­p
+Cáº¥u trÃºc mÃ´ phá»ng vÃ  flow hoÃ n toÃ n tÆ°Æ¡ng tá»± so vá»›i mÃ´ phá»ng, chá»‰ thay Ä‘á»•i cpu thÃ nh zynq arm cá»§a kit kv260 vÃ  thá»±c hiá»‡n Ä‘á»• kit báº±ng pháº§n má»m Vitis IDE, cÃ²n hiá»ƒu lÃ  bare metal.
+Thá»±c hiá»‡n vá»›i bá»™ thÃ´ng sá»‘ Ä‘áº§u vÃ o nhÆ° sau:
+Table  SEQ Table \* ARABIC 16: ThÃ´ng sá»‘ chuáº©n hÃ³a Ä‘Æ°á»£c sá»­ dá»¥ng khi thá»±c thi trÃªn KV260
+
+ÄÃ¡nh giÃ¡ káº¿t quáº£ hiá»‡u nÄƒng timing vÃ  power vá»›i Q[16x64]; K[16x64]
+Cáº¥u trÃºc thá»±c thi version 01
+Káº¿t quáº£ Ä‘Ã¡nh giÃ¡ hiá»‡u nÄƒng Ä‘Æ°á»£c trÃ­ch xuáº¥t tá»« Open Implemented Design vá»›i clock 100 MHz, cÃ¡c thÃ´ng sá»‘ chi tiáº¿t Ä‘Æ°á»£c Ä‘Ã­nh kÃ¨m trong pháº§n phá»¥ lá»¥c. Cáº¥u trÃºc thá»±c thi tÆ°Æ¡ng tá»± dá»± Ã¡n trong mÃ´n Äá»“ Ã¡n CÆ¡ sá»Ÿ ngÃ nh.
+Table  SEQ Table \* ARABIC 17: Cáº¥u trÃºc thá»±c thi version 01
+
+Table  SEQ Table \* ARABIC 18: ThÃ´ng sá»‘ report utilization cá»§a cáº¥u trÃºc version 01
+
+Cáº¥u trÃºc thá»±c thi version 02
+Káº¿t quáº£ Ä‘Ã¡nh giÃ¡ hiá»‡u nÄƒng Ä‘Æ°á»£c trÃ­ch xuáº¥t tá»« Open Implemented Design vá»›i clock 100 MHz, cÃ¡c thÃ´ng sá»‘ chi tiáº¿t Ä‘Æ°á»£c Ä‘Ã­nh kÃ¨m trong pháº§n phá»¥ lá»¥c. Cáº¥u trÃºc version 2 nÃ y Ä‘Æ°á»£c thá»±c thi Ä‘á»ƒ giáº£m thá»i gian tÃ­nh toÃ¡n cÃ¡c phÃ©p nhÃ¢n trong module softmax, thá»±c hiá»‡n phÃ©p nhÃ¢n song song NUM_WAYS pháº§n tá»­ trong 1 cycle.
+Table  SEQ Table \* ARABIC 19: Cáº¥u trÃºc thá»±c thi version 02
+
+Table  SEQ Table \* ARABIC 20: ThÃ´ng sá»‘ report utilization cá»§a cáº¥u trÃºc version 02
+
+Cáº¥u trÃºc thá»±c thi version 03
+Káº¿t quáº£ Ä‘Ã¡nh giÃ¡ hiá»‡u nÄƒng Ä‘Æ°á»£c trÃ­ch xuáº¥t tá»« Open Implemented Design vá»›i clock 150 MHz, cÃ¡c thÃ´ng sá»‘ chi tiáº¿t Ä‘Æ°á»£c Ä‘Ã­nh kÃ¨m trong pháº§n phá»¥ lá»¥c. Cáº¥u trÃºc version 2 nÃ y Ä‘Æ°á»£c thá»±c thi Ä‘á»ƒ giáº£m thá»i gian tÃ­nh toÃ¡n cÃ¡c phÃ©p nhÃ¢n trong module softmax, thá»±c hiá»‡n phÃ©p nhÃ¢n song song NUM_WAYS pháº§n tá»­ trong 1 cycle.
+Table  SEQ Table \* ARABIC 21: Cáº¥u trÃºc thá»±c thi version 03
+
+Khi enable pipeline register M_REG cá»§a DSP trong module pe_unit, quy trÃ¬nh thá»±c thi thay vÃ¬ lÃ  Ä‘á»c RAM  NhÃ¢n  Cá»™ng  LÆ°u vÃ o buffer thÃ¬ sáº½ thá»±c hiá»‡n pipeline 2 táº§ng, táº§ng 1 lÃ  thá»±c hiá»‡n phÃ©p nhÃ¢n, táº§ng 2 thá»±c hiá»‡n cá»™ng rá»“i lÆ°u buffer.
+Module softmax cÅ©ng thá»±c hiá»‡n cáº¥u trÃºc tÆ°Æ¡ng tá»± nhÆ°ng hoÃ n toÃ n báº±ng RTL, cáº¥u trÃºc thá»±c thi Ä‘Ã£ Ä‘Æ°á»£c trÃ¬nh bÃ y trong bÃ i bÃ¡o cÃ¡o gá»“m 2 táº§ng pipeline, má»—i táº§ng thá»±c hiá»‡n NUM_WAYS phÃ©p tÃ­nh song song.
+Table  SEQ Table \* ARABIC 22: ThÃ´ng sá»‘ report utilization cá»§a cáº¥u trÃºc version 03
+
+So sÃ¡nh tÃ i nguyÃªn sá»­ dá»¥ng
+
+Káº¿t quáº£ thá»±c thi vá»›i Q[16x64]; K[16x64]
+Káº¿t quáº£ thá»±c thi vá»›i phÆ°Æ¡ng phÃ¡p Baremetal
+
+HÃ¬nh   SEQ HÃ¬nh_ \* ARABIC 33: Káº¿t quáº£ tÃ­nh toÃ¡n attention score trÃªn kv260
+
+HÃ¬nh   SEQ HÃ¬nh_ \* ARABIC 34: Káº¿t quáº£ tÃ­nh toÃ¡n softmax score trÃªn kv260
+Káº¿t quáº£ mÃ´ phá»ng Ä‘á»c tá»« terminal output cá»‰a Vitis IDE, nháº­n cÃ¡c káº¿t quáº£ softmax score vÃ  so sÃ¡nh vá»›i golden model cho ra táº¥t cáº£ Ä‘á»u pass Ä‘á»‘i vá»›i 16x16 attention score vÃ  16x16 softmax score.
+Káº¿t quáº£ thá»±c thi vá»›i Ubuntu Linux
+NgoÃ i ra, bÃ i nghiÃªn cá»©u cÃ²n thá»±c hiá»‡n push dá»± Ã¡n lÃªn trÃªn kv260 báº±ng linux thÃ´ng qua tháº» microsd, káº¿t quáº£ hoÃ n toÃ n Ä‘Ãºng so vá»›i golden model.
+
+HÃ¬nh   SEQ HÃ¬nh_ \* ARABIC 35: Káº¿t quáº£ push dá»± Ã¡n báº±ng linux
+
+HÃ¬nh   SEQ HÃ¬nh_ \* ARABIC 36: Káº¿t quáº£ so sÃ¡nh vá»›i golden model tá»« dá»¯ liá»‡u Ä‘Æ°á»£c trÃ­ch xuáº¥t thÃ´ng qua ubuntu
+Káº¿t quáº£ thá»±c thi vá»›i Q[128x64]; K[16x64]
+Thá»±c hiá»‡n tiling pháº§n má»m nhÆ° Ä‘Ã£ Ä‘á» cáº­p trong má»¥c IV vá»›i SEQ_LEN = 128 trÃªn kit KV260, phÆ°Æ¡ng phÃ¡p thá»±c thi lÃ  ubuntu linux. Ma tráº­n softmax score sáº½ cÃ³ kÃ­ch thÆ°á»›c 128x16, bao gá»“m 2048 pháº§n tá»­. Thá»±c thi Ä‘á»‘i vá»›i cáº¥u trÃºc verion 02 vÃ  version 03.
+Káº¿t quáº£ thá»±c thi cáº¥u trÃºc version 02
+
+HÃ¬nh   SEQ HÃ¬nh_ \* ARABIC 37: Káº¿t quáº£ cháº¡y kÃ­ch thÆ°á»›c [128x64]x[16x64] cÃ³ thÃªm tiling báº±ng software
+
+HÃ¬nh   SEQ HÃ¬nh_ \* ARABIC 38: Káº¿t quáº£ cháº¡y kÃ­ch thÆ°á»›c [128x64]x[16x64] cÃ³ thÃªm tiling báº±ng software
+Káº¿t quáº£ thá»±c thi cáº¥u trÃºc version 03
+
+HÃ¬nh   SEQ HÃ¬nh_ \* ARABIC 39: ThÃªm pipeline 2 state cá»§a softmax táº¡i phÃ©p chia Chu ká»³ 1 chá»‰ lo Ä‘á»c RAM vÃ  nhÃ¢n. Chu ká»³ 2 chá»‰ lo dá»‹ch bit vÃ  xuáº¥t ra
+
+HÃ¬nh   SEQ HÃ¬nh_ \* ARABIC 40: ThÃªm pipeline 2 state cá»§a softmax táº¡i phÃ©p chia Chu ká»³ 1 chá»‰ lo Ä‘á»c RAM vÃ  nhÃ¢n. Chu ká»³ 2 chá»‰ lo dá»‹ch bit vÃ  xuáº¥t ra
+Káº¿t quáº£ 2048 pháº§n tá»­ softmax score so sÃ¡nh vá»›i golden model Ä‘Æ°á»£c lÆ°u trong file txt.
+
+HÃ¬nh   SEQ HÃ¬nh_ \* ARABIC 41: Káº¿t quáº£ lÆ°u giÃ¡ trá»‹ softmax score vÃ  so sÃ¡nh golden model khi cháº¡y kÃ­ch thÆ°á»›c [128x64]x[16x64] cÃ³ thÃªm tiling báº±ng software
+
+
+HÃ¬nh   SEQ HÃ¬nh_ \* ARABIC 42: Káº¿t quáº£ lÆ°u giÃ¡ trá»‹ softmax score vÃ  so sÃ¡nh golden model khi cháº¡y kÃ­ch thÆ°á»›c [128x64]x[16x64] cÃ³ thÃªm tiling báº±ng software
+So sÃ¡nh thá»i gian cháº¡y hai version trÃªn hardware
+Table  SEQ Table \* ARABIC 23: Báº£ng so sÃ¡nh thá»i gian cháº¡y hardware cáº¥u trÃºc version 02 vÃ  03
+
+TÃCH Há»¢P IP LINEAR TRONG LLAMA2.C
+LLAMA2.C
+Llama2.c lÃ  project cá»§a Andrej Karpathy, má»¥c tiÃªu hiá»‡n thá»±c inference engine cho kiáº¿n trÃºc llama2.c, khÃ´ng phá»¥ thuá»™c PyTorch, GPU, thÆ° viá»‡n Machine Learning, dá»± Ã¡n cÃ³ thá»ƒ cháº¡y trÃªn báº¥t ká»³ há»‡ thá»‘ng nÃ o cÃ³ biÃªn dá»‹ch ngÃ´n ngá»¯ C. MÃ´ hÃ¬nh Ä‘Æ°á»£c thá»±c thi trong bÃ i bÃ¡o cÃ¡o lÃ  stories15M. TinyStories lÃ  táº­p dá»¯ liá»‡u gá»“m cÃ¡c cÃ¢u chuyá»‡n ngáº¯n, tá»« vá»±ng Ä‘Æ¡n giáº£n (tÆ°Æ¡ng Ä‘Æ°Æ¡ng trÃ¬nh Ä‘á»™ tráº» 3 Ä‘áº¿n 4 tuá»•i), do Microsoft Research táº¡o ra báº±ng cÃ¡ch dÃ¹ng GPT-3.5/GPT-4 sinh hÃ ng loáº¡t truyá»‡n vá»›i rÃ ng buá»™c tá»« vá»±ng háº¹p.
+Table  SEQ Table \* ARABIC 24: Kiáº¿n trÃºc mÃ´ hÃ¬nh stories15M
+Má»¥c tiÃªu tÃ­ch há»£p
+Má»¥c tiÃªu tÃ­ch há»£p lÃ  thay tháº¿ cáº¥u trÃºc tÃ­nh attention score code c trong dá»± Ã¡n llama2.c gá»‘c báº±ng cáº¥u trÃºc pháº§n cá»©ng tÃ­nh attention score cá»§a dá»± Ã¡n, nghÄ©a lÃ  cáº¥u trÃºc DMA vÃ  IP AXI Linear.
+
+HÃ¬nh   SEQ HÃ¬nh_ \* ARABIC 43: LÆ°u Ä‘á»“ giáº£i thuáº­t thá»±c thi phÃ©p tÃ­nh attention score trong llama2.c
+Giáº£i thuáº­t thá»±c thi code c cá»§a llama2.c lÃ  phÃ©p dot-product Ä‘Æ°á»£c thá»±c thi qua for loop, má»—i loop thá»±c hiá»‡n phÃ©p nhÃ¢n cá»™ng tÃ­ch lÅ©y giá»¯a Q_h vÃ  K_t, hai bá»™ dá»¯ liá»‡u nÃ y Ä‘á»u Ä‘Æ°á»£c láº¥y tá»« cache model.
+Cáº¥u trÃºc thá»±c thi hardware DMA â€“ IP AXI Linear
+
+HÃ¬nh   SEQ HÃ¬nh_ \* ARABIC 44: SÆ¡ Ä‘á»“ bus hardware DMA â€“ IP AXI Linear
+
+HÃ¬nh  45: Cáº¥u trÃºc Block Design cá»§a khá»‘i RTL DMA â€“ IP AXI Linear
+Table  SEQ Table \* ARABIC 25: ThÃ´ng tin chuáº©n giao tiáº¿p cá»§a cÃ¡c IP
+
+Váº¥n Ä‘á» khi thá»±c hiá»‡n tÃ­ch há»£p
+Váº¥n Ä‘á» 1: Sai lá»‡ch vá» kiáº¿n trÃºc. MÃ´ hÃ¬nh Llama2.c 15M cÃ³ thiáº¿t káº¿ vá»›i kiáº¿n trÃºc cÃ³ D_MODEL = 48, trong kiáº¿n trÃºc RTL IP AXI Linear cÃ³ D_MODEL = 64. Má»—i thá»i Ä‘iá»ƒm tÃ­nh toÃ¡n, ma tráº­n Q chá»‰ cÃ³ Ä‘Ãºng 1 vector kÃ­ch thÆ°á»›c 1x48, kiáº¿n trÃºc RTL yÃªu cáº§u ma tráº­n Q cÃ³ kiáº¿n trÃºc 64x64.
+Váº¥n Ä‘á» 2: KÃ­ch thÆ°á»›c ma tráº­n Key K biáº¿n thiÃªn, theo lÆ°u Ä‘á»“ giáº£i thuáº­t cá»§a attention score cá»§a llama2.c, kÃ­ch thÆ°á»›c cá»§a ma tráº­n Key biáº¿n thiÃªn tá»« 1 Ä‘áº¿n 256 vá»›i thÃ´ng sá»‘ kÃ­ch thÆ°á»›c lÃ  (pos+1)x48. Trong cáº¥u trÃºc pháº§n cá»©ng, khá»‘i dá»¯ liá»‡u ma tráº­n K cá»‘ Ä‘á»‹nh lÃ  64x64.
+Váº¥n Ä‘á» 3: Sai lá»‡ch há»‡ sá»‘ chia, káº¿t quáº£ trong llama2.c Ä‘Æ°á»£c chia cho dmodel=48, khÃ¡c vá»›i há»‡ sá»‘ chia trong RTL lÃ  dmodel=64. NgoÃ i ra, khá»‘i RTL thá»±c thi phÃ©p tÃ­nh trÃªn Ä‘á»‹nh dáº¡ng sá»‘ nguyÃªn Q8.8, nghÄ©a lÃ  káº¿t quáº£ RTL Ä‘Ã£ Ä‘Æ°á»£c dá»‹ch pháº£i cho 8 (chia cho 256) vÃ  chia cho dmodel=64=8 lÃ  lá»‡nh dá»‹ch pháº£i cho 3 bit, tá»•ng cá»™ng pháº§n cá»©ng káº¿t quáº£ chia cho 2048, trong khi káº¿t quáº£ llama2.c thá»±c thi trÃªn sá»‘ thá»±c.
+PhÆ°Æ¡ng phÃ¡p tÃ­ch há»£p
+Vá»›i má»¥c tiÃªu giáº£i quyáº¿t 3 váº¥n Ä‘á» trÃªn mÃ  khÃ´ng cáº§n thá»±c hiá»‡n chá»‰nh sá»­a RTL vÃ  compile láº¡i, thá»±c hiá»‡n chá»‰nh sá»­a software Driver C/C++.
+Váº¥n Ä‘á» 1: Sai lá»‡ch vá» kÃ­ch thÆ°á»›c kiáº¿n trÃºc, sá»­ dá»¥ng phÆ°Æ¡ng phÃ¡p zero-padding Ä‘á»ƒ bÃ¹ Ä‘áº¯p sá»± thiáº¿u há»¥t vá» kÃ­ch thÆ°á»›c tá»« 48 lÃªn 64, thay vÃ¬ gá»­i ma tráº­n Q 1x48, code C sáº½ chÃ¨n thÃªm zero padding 16 giÃ¡ trá»‹ 0 vÃ o cuá»‘i má»—i hÃ ng cá»§a ma tráº­n Q vÃ  K trÆ°á»›c khi Ä‘áº©y qua DMA, sau Ä‘Ã³ chÃ¨n thÃªm 63 hÃ ng zero-padding. Theo tÃ­nh cháº¥t cá»§a tÃ­ch vÃ´ hÆ°á»›ng, phÃ©p nhÃ¢n cá»™ng tÃ­ch lÅ©y vá»›i giÃ¡ trá»‹ 0 khÃ´ng lÃ m thay Ä‘á»•i giÃ¡ trá»‹ tÃ­ch lÅ©y.
+Váº¥n Ä‘á» 2: KÃ­ch thÆ°á»›c ma tráº­n K biáº¿n thiÃªn, ma tráº­n K cÃ³ kÃ­ch thÆ°á»›c lÃ  (pos+1)x48, sá»­ dá»¥ng phÆ°Æ¡ng phÃ¡p sequence tiling Ä‘á»ƒ tÃ¡ch ma tráº­n K thÃ nh nhiá»u tiling, má»—i ma tráº­n kÃ­ch thÆ°á»›c tá»‘i Ä‘a 64x64, náº¿u pos+1 lá»›n hÆ¡n 64, thá»±c hiá»‡n zero-padding cho 64-(pos+1-64) hÃ ng cÃ²n láº¡i, vÃ­ dá»¥ náº¿u pos+1=100, tiling cho tile Ä‘áº§u lÃ  64x64, tile thá»© 2 cÃ²n 36x64, thá»±c hiá»‡n zero-padding cho 64-36=28 hÃ ng cÃ²n láº¡i.
+Váº¥n Ä‘á» 3: Sai lá»‡ch há»‡ sá»‘ chia, code C thá»±c hiá»‡n khÃ´i phá»¥c giÃ¡ trá»‹ sá»‘ thá»±c tá»« RTL thÃ´ng qua cÃ´ng thá»©c Truescore=RTL Out*2048scale q* sclae k*48
+Káº¿t quáº£ tÃ­ch há»£p
+Thá»±c hiá»‡n tÃ­ch há»£p FPGA cÃ¹ng RTL DMA â€“ IP AXI Linear thÃ´ng qua boot ubuntu linux trÃªn kit KV260, sá»­ dá»¥ng llama2.c cÃ¹ng vá»›i model Stories15M, káº¿t quáº£ run Ä‘Æ°á»£c model Stories 15M.
+
+HÃ¬nh   SEQ HÃ¬nh_ \* ARABIC 46: Káº¿t quáº£ cháº¡y model Stories 15M dÃ¹ng attention score cá»§a llama2.s láº§n 1
+
+HÃ¬nh   SEQ HÃ¬nh_ \* ARABIC 47: Káº¿t quáº£ cháº¡y model Stories 15M dÃ¹ng attention score cá»§a llama2.s láº§n 2
+
+HÃ¬nh   SEQ HÃ¬nh_ \* ARABIC 48: Káº¿t quáº£ cháº¡y model Stories 15M dÃ¹ng attention score cá»§a llama2.s láº§n 3
+
+HÃ¬nh   SEQ HÃ¬nh_ \* ARABIC 49: Káº¿t quáº£ cháº¡y model Stories 15M dÃ¹ng RTL attention score FPGA KV260 láº§n 1
+
+HÃ¬nh   SEQ HÃ¬nh_ \* ARABIC 50: Káº¿t quáº£ cháº¡y model Stories 15M dÃ¹ng RTL attention score FPGA KV260 láº§n 2
+
+HÃ¬nh   SEQ HÃ¬nh_ \* ARABIC 51: Káº¿t quáº£ cháº¡y model Stories 15M dÃ¹ng RTL attention score FPGA KV260 láº§n 3
+Thá»±c hiá»‡n so sÃ¡nh tÃ i nguyÃªn token cá»§a 2 phÆ°Æ¡ng phÃ¡p giá»¯a attention score cá»§a llama2.c vÃ  tÃ­ch há»£p FPGA Kit KV260.
+Table  SEQ Table \* ARABIC 26: TÃ i nguyÃªn token Ä‘Æ°á»£c sá»­ dá»¥ng cá»§a model Stories 15M
+
+Thá»±c hiá»‡n so sÃ¡nh thá»i gian cháº¡y hÃ m attention score cá»§a 2 phÆ°Æ¡ng phÃ¡p giá»¯a llama2.c vÃ  tÃ­ch há»£p FPGA Kit KV260.
+Table  SEQ Table \* ARABIC 27: Thá»i gian cháº¡y attention score cá»§a model Stories 15M
+
+TÃ€I LIá»†U THAM KHáº¢O
+[1] ARM Limited, "AMBA AXI4-Lite Interface Specification," ARM IHI0022L, 2022.
+[2] ARM Limited, "AMBA AXI4-Stream Protocol Specification," ARM IHI0051B, 2021.
+[3] Xilinx Inc., "AXI DMA v7.1 Product Guide," PG021, AMD/Xilinx, 2022.
+[4] Xilinx Inc., "AXI Reference Guide," UG761, AMD/Xilinx, 2012.
+[5] R. Sass and A. G. Schmidt, The Zynq Book: Embedded Processing with the ARM Cortex-A9 on the Xilinx Zynq-7000 All Programmable SoC, Strathclyde Academic Media, 2014.
+[6] Xilinx Inc., "Zynq-7000 SoC: Embedded Design Tutorial, IP Creation with Vivado," AMD/Xilinx, 2016.
+[7] Sumiran Mehra1, Gopal Raut1, Ribhu Das Purkayastha1, Santosh Kumar Vishvakarma, Anton Biasizzo, â€˜â€˜An Empirical Evaluation of Enhanced Performance Softmax Function in Deep Learningâ€™â€™ 2023.
+[8] Wenhua Ye, Xu Zhou, Joey Tianyi Zhou, Cen Chen, Kenli Li, â€œAccelerating atention mechanism on FPGAs based on eficient reconfigurable systolic arrayâ€ 2022.
+VII. PHá»¤ Lá»¤C
+Phá»¥ lá»¥c A â€“ MÃ£ nguá»“n dá»± Ã¡n
+Dá»± Ã¡n Ä‘Æ°á»£c lÆ°u trá»¯ táº¡i github: PHATVP22VT (Arthur-Artoria)
+Phá»¥ lá»¥c B â€“ Report Utilization
+
+HÃ¬nh   SEQ HÃ¬nh_ \* ARABIC 52: Timing summary cáº¥u trÃºc verion 01
+
+HÃ¬nh   SEQ HÃ¬nh_ \* ARABIC 53: Timing summary cáº¥u trÃºc verion 02
+
+HÃ¬nh   SEQ HÃ¬nh_ \* ARABIC 54: Timing summary cáº¥u trÃºc verion 03
+
+HÃ¬nh   SEQ HÃ¬nh_ \* ARABIC 55: On-Chip Power cáº¥u trÃºc version 01
+
+HÃ¬nh   SEQ HÃ¬nh_ \* ARABIC 56: On-Chip Power cáº¥u trÃºc version 02
+
+HÃ¬nh   SEQ HÃ¬nh_ \* ARABIC 57: On-Chip Power cáº¥u trÃºc version 03
+
+HÃ¬nh   SEQ HÃ¬nh_ \* ARABIC 58: Design Runs cáº¥u trÃºc version 01
+
+HÃ¬nh   SEQ HÃ¬nh_ \* ARABIC 59: Design Runs cáº¥u trÃºc version 02
+
+HÃ¬nh   SEQ HÃ¬nh_ \* ARABIC 60: Design Runs cáº¥u trÃºc version 03
+
+
+HÃ¬nh  61: Káº¿t quáº£ cháº¡y IP Linear vá»›i Q[64x64] vÃ  K[64x64]
+
+HÃ¬nh  62 Káº¿t quáº£ cháº¡y IP Linear vá»›i Q[128x64] vÃ  K[128x64]
