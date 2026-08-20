@@ -1,0 +1,55 @@
+/dts-v1/;
+/plugin/;
+/ {
+    fragment@0 {
+        target = <&fpga_full>;
+        __overlay__ {
+            #address-cells = <2>;
+            #size-cells = <2>;
+            firmware-name = "zynq_dma_ls.bit.bin";
+        };
+    };
+    fragment@1 {
+        target = <&amba>;
+        __overlay__ {
+            #address-cells = <2>;
+            #size-cells = <2>;
+            
+            axi_dma: dma@a0020000 {
+                compatible = "generic-uio";
+                reg = <0x0 0xa0020000 0x0 0x10000>;
+            };
+            ip_linear: linear@a0030000 {
+                compatible = "generic-uio";
+                reg = <0x0 0xa0030000 0x0 0x10000>;
+            };
+            ip_softmax: softmax@a0040000 {
+                compatible = "generic-uio";
+                reg = <0x0 0xa0040000 0x0 0x10000>;
+            };
+            src_bram: src-bram@a0000000 {
+                compatible = "generic-uio";
+                reg = <0x0 0xa0000000 0x0 0x10000>;
+            };
+            dst_bram: dst-bram@a0010000 {
+                compatible = "generic-uio";
+                reg = <0x0 0xa0010000 0x0 0x10000>;
+            };
+        };
+    };
+    fragment@2 {
+        target-path = "/";
+        __overlay__ {
+            udmabuf0 {
+                compatible = "ikwzm,u-dma-buf";
+                device-name = "udmabuf0";
+                size = <0x0 0x100000>;
+            };
+            udmabuf1 {
+                compatible = "ikwzm,u-dma-buf";
+                device-name = "udmabuf1";
+                size = <0x0 0x100000>;
+            };
+        };
+    };
+};

@@ -1,0 +1,4 @@
+all:
+{
+    dma_linear_wrapper.bit
+}

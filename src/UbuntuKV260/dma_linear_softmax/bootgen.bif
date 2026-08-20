@@ -1,0 +1,4 @@
+all:
+{
+    zynq_dma_ip_linear_wrapper.bit
+}
