@@ -191,19 +191,15 @@ Chi tiết đầy đủ (flow tính toán per-cycle, thuật toán reciprocal-di
 - Bring-up trên KV260 thật (Vitis bare-metal, `main.c`), cấu hình `SEQ_LEN=D_HEAD=N_PE=DATA_WIDTH=16`: **PASS** — output tại `DST_BASE` khớp `golden_softmax` 100%.
 - Golden data: `golden_model.py` xuất `golden_score.mem` (input softmax) và `golden_softmax.mem` (kết quả cuối, Q1.15), cùng 2 file `.coe` cho `exp_rom`/`recip_rom`.
 
+
 ---
 ## 8. Kết quả
 
 <p align="center">
-  <img src="https://github.com/user-attachments/assets/a9ddefc3-a80e-48d2-ad77-fcec934fc4f8" alt="KẾT QUẢ BARE METAL DMA + IP LINEAR" width="700">
+  <img src="https://github.com/user-attachments/assets/d136fb3f-f9e0-40a4-a720-f325f3d99a5d" alt="KẾT QUẢ BARE METAL DMA + IP LINEAR" width="700">
   <br>
-  <em>KẾT QUẢ BARE METAL DMA + IP LINEAR</em>
+  <em>KẾT QUẢ BOOT LINUX K[64Xx64]; Q[64x64]</em>
 </p>
 
-<p align="center">
-  <img src="https://github.com/user-attachments/assets/8ef67266-fff5-45d2-bacc-2d2511215467" alt="KẾT QUẢ BARE METAL DMA + IP LINEAR + IP SOFTMAX" width="700">
-  <br>
-  <em>KẾT QUẢ BARE METAL DMA + IP LINEAR + IP SOFTMAX</em>
-</p>
 
 ---
