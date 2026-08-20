@@ -1,4 +1,4 @@
-<img width="926" height="494" alt="image" src="https://github.com/user-attachments/assets/308f8952-9cd6-42d4-8dd4-5acb5111684b" /># Dự án tích hợp: DMA + IP Linear (Q×Kᵀ) + IP Softmax trên Zynq KV260
+# Dự án tích hợp: DMA + IP Linear (Q×Kᵀ) + IP Softmax trên Zynq KV260
 
 ## Mục lục
 
